@@ -1,0 +1,41 @@
+name: CI
+on: 
+  push:
+    tags:
+      - 'v*'
+
+env:
+  GODOT_VERSION: 3.4.2
+  EXPORT_NAME: ldjam2022-04
+
+jobs:
+  build:
+    name: Web Export
+    runs-on: ubuntu-latest
+    steps:
+      # Always include the checkout step so that 
+      # your project is available for Godot to export
+    - name: checkout
+      uses: actions/checkout@v2.3.1
+      with:
+        fetch-depth: 0
+    
+    # separate step to extract the version from the tag name
+    - name: get tag from version
+      id: tag_version
+      run: |
+        echo ::set-output name=TAG_VERSION::${GITHUB_REF#refs/tags/v}
+
+    - name: export game
+      # Use latest version (see releases for all versions)
+      uses: firebelley/godot-export@v3.0.0
+      with:
+        # Defining all the required inputs
+        # I used the mono version of Godot in this example
+        godot_executable_download_url: https://downloads.tuxfamily.org/godotengine/3.5/beta2/Godot_v3.5-beta2_linux_headless.64.zip
+        godot_export_templates_download_url: https://downloads.tuxfamily.org/godotengine/3.5/beta2/Godot_v3.5-beta2_export_templates.tpz
+        relative_project_path: ./
+        create_release: true
+        base_version:  ${{ steps.tag_version.outputs.TAG_VERSION}}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
