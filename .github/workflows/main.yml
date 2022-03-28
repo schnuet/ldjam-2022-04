@@ -43,5 +43,5 @@ jobs:
         CHANNEL: web
         ITCH_GAME: ludum-dare-game-2022-04
         ITCH_USER: ulm-awesome
-        PACKAGE: HTML5.zip
+        PACKAGE: /home/runner/.local/share/godot/dist/HTML5.zip
         VERSION: ${{ steps.tag_version.outputs.TAG_VERSION }}
