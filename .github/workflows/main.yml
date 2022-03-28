@@ -35,3 +35,13 @@ jobs:
         base_version:  ${{ steps.tag_version.outputs.TAG_VERSION}}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    # publish to itch
+    - uses: josephbmanley/butler-publish-itchio-action@master
+      env:
+        BUTLER_CREDENTIALS: ${{ secrets.ITCH_IO_API_KEY }}
+        CHANNEL: web
+        ITCH_GAME: ludum-dare-game-2022-04
+        ITCH_USER: ulm-awesome
+        PACKAGE: HTML5.zip
+        VERSION: ${{ steps.tag_version.outputs.TAG_VERSION }}
