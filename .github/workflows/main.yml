@@ -39,8 +39,8 @@ jobs:
     - name: copy zip
       run: |
         cd /home/runner/.local/share/godot/dist
-        mkdir ~/dist
-        cp /home/runner/.local/share/godot/dist/HTML5.zip ~/dist/HTML5.zip
+        mkdir ${{ github.workspace }}/dist
+        cp /home/runner/.local/share/godot/dist/HTML5.zip ${{ github.workspace }}/dist/HTML5.zip
 
     # publish to itch
     - uses: josephbmanley/butler-publish-itchio-action@master
@@ -49,5 +49,5 @@ jobs:
         CHANNEL: web
         ITCH_GAME: ludum-dare-game-2022-04
         ITCH_USER: ulm-awesome
-        PACKAGE: ~/dist/HTML5.zip
+        PACKAGE: /github/workspace/dist/HTML5.zip
         VERSION: ${{ steps.tag_version.outputs.TAG_VERSION }}
