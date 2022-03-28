@@ -39,7 +39,7 @@ jobs:
     - name: copy zip
       run: |
         cd /home/runner/.local/share/godot/dist
-        ls
+        mkdir ~/dist
         cp /home/runner/.local/share/godot/dist/HTML5.zip ~/dist/HTML5.zip
 
     # publish to itch
