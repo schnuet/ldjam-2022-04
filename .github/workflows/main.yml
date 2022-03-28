@@ -35,7 +35,12 @@ jobs:
         base_version:  ${{ steps.tag_version.outputs.TAG_VERSION}}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: cp /home/runner/.local/share/godot/dist/HTML5.zip ~/dist/HTML5.zip
+
+    - name: copy zip
+      run: |
+        cd /home/runner/.local/share/godot/dist
+        ls
+        cp /home/runner/.local/share/godot/dist/HTML5.zip ~/dist/HTML5.zip
 
     # publish to itch
     - uses: josephbmanley/butler-publish-itchio-action@master
