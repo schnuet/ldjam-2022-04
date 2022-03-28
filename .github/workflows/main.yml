@@ -33,7 +33,7 @@ jobs:
         relative_project_path: ./
         create_release: true
         base_version:  ${{ steps.tag_version.outputs.TAG_VERSION}}
-        relative_export_path: /export/
+        relative_export_path: ./export
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -44,5 +44,5 @@ jobs:
         CHANNEL: web
         ITCH_GAME: ludum-dare-game-2022-04
         ITCH_USER: ulm-awesome
-        PACKAGE: /export/HTML5.zip
+        PACKAGE: ./export/HTML5.zip
         VERSION: ${{ steps.tag_version.outputs.TAG_VERSION }}
