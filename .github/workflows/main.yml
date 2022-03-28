@@ -35,6 +35,7 @@ jobs:
         base_version:  ${{ steps.tag_version.outputs.TAG_VERSION}}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: cp /home/runner/.local/share/godot/dist/HTML5.zip ~/dist/HTML5.zip
 
     # publish to itch
     - uses: josephbmanley/butler-publish-itchio-action@master
@@ -43,5 +44,5 @@ jobs:
         CHANNEL: web
         ITCH_GAME: ludum-dare-game-2022-04
         ITCH_USER: ulm-awesome
-        PACKAGE: /home/runner/.local/share/godot/dist/HTML5.zip
+        PACKAGE: ~/dist/HTML5.zip
         VERSION: ${{ steps.tag_version.outputs.TAG_VERSION }}
