@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="2022 - 04"
-run/main_scene="res://Scenes/02 - First/01_First.tscn"
+run/main_scene="res://Scenes/02 - First/First.tscn"
 config/icon="res://icon.png"
 
 [display]
