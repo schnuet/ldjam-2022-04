@@ -1,7 +1,7 @@
 ### Godot ###
 # Godot-specific ignores
 .import/
-export
+.export/
 export.cfg
 
 # Imported translations (automatically generated from CSV files)
