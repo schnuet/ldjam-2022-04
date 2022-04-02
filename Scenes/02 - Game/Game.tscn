@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Rooms/Kueche/kueche.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Rooms/Vorgarten/vorgarten.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Rooms/Wohnzimmer/wohnzimmer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Rooms/Zimmer/zimmer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/02 - Game/Game.gd" type="Script" id=5]
+[ext_resource path="res://Components/Player.tscn" type="PackedScene" id=6]
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Rooms" type="Node2D" parent="."]
+
+[node name="Vorgarten" parent="Rooms" groups=["room"] instance=ExtResource( 2 )]
+position = Vector2( 0, -1632 )
+
+[node name="Wohnzimmer" parent="Rooms" groups=["room"] instance=ExtResource( 3 )]
+position = Vector2( 0, -1088 )
+
+[node name="Kueche" parent="Rooms" groups=["room"] instance=ExtResource( 1 )]
+position = Vector2( 0, -544 )
+
+[node name="Zimmer" parent="Rooms" groups=["room"] instance=ExtResource( 4 )]
+
+[node name="Player" parent="Rooms" instance=ExtResource( 6 )]
+position = Vector2( 112, 176 )
+
+[connection signal="change_room" from="Rooms/Vorgarten" to="." method="_on_Vorgarten_change_room"]
+[connection signal="change_room" from="Rooms/Wohnzimmer" to="." method="_on_Wohnzimmer_change_room"]
+[connection signal="change_room" from="Rooms/Kueche" to="." method="_on_Kueche_change_room"]
+[connection signal="change_room" from="Rooms/Zimmer" to="." method="_on_Zimmer_change_room"]
+[connection signal="change_room" from="Rooms/Player" to="." method="_on_Player_change_room"]

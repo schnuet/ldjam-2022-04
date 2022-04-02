@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Components/MoveableObject.gd" type="Script" id=1]
+
+[node name="MoveableObject" type="Area2D" groups=["activatable"]]
+position = Vector2( 336, 240 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
