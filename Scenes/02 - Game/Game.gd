@@ -1,12 +1,14 @@
 extends Node2D
 
 var current_room = null;
-onready var rooms = get_tree().get_nodes_in_group("room");
 
+onready var rooms = get_tree().get_nodes_in_group("room");
 onready var player = get_tree().get_nodes_in_group("player")[0];
 
 func _ready():
 	make_rooms_inactive();
+	
+	$Rooms.remove_child(player);
 	
 	change_room("Zimmer", Vector2(400, 272));
 
@@ -15,7 +17,7 @@ func change_room(room_name:String, player_position:Vector2):
 		deactivate_room(current_room);
 	
 	player.global_position = player_position;
-
+	
 	var room = get_node("Rooms/" + room_name);
 	
 	activate_room(room, current_room);
@@ -27,9 +29,13 @@ func activate_room(room:Node2D, room_from):
 		old_room_name = room_from.name;
 	
 	room.activate();
+	room.get_node("TileMap").add_child(player);
 
 func deactivate_room(room:Node2D):
 	room.deactivate();
+	var tilemap = room.get_node("TileMap");
+	if tilemap:
+		tilemap.remove_child(player);
 
 
 func make_rooms_inactive():

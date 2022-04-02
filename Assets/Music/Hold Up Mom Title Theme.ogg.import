@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Hold Up Mom Title Theme.ogg-ae4adb2e52896197e0e615a79d16e60e.oggstr"
+
+[deps]
+
+source_file="res://Assets/Music/Hold Up Mom Title Theme.ogg"
+dest_files=[ "res://.import/Hold Up Mom Title Theme.ogg-ae4adb2e52896197e0e615a79d16e60e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
