@@ -10,7 +10,7 @@ func _ready():
 	
 	$Rooms.remove_child(player);
 	
-	change_room("Zimmer", Vector2(400, 272));
+	change_room("Kueche", Vector2(432, 304));
 
 func change_room(room_name:String, player_position:Vector2):
 	if current_room:

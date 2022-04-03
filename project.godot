@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Door",
 "language": "GDScript",
 "path": "res://Components/Door.gd"
+}, {
+"base": "Area2D",
+"class": "Pickable",
+"language": "GDScript",
+"path": "res://Components/Pickable.gd"
 } ]
 _global_script_class_icons={
-"Door": ""
+"Door": "",
+"Pickable": ""
 }
 
 [application]
@@ -27,6 +33,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Globals="*res://Globals/globals.gd"
+MessageSystem="*res://Globals/MessageSystem.tscn"
 
 [display]
 

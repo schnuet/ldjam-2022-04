@@ -13,18 +13,18 @@ script = ExtResource( 5 )
 [node name="Rooms" type="Node2D" parent="."]
 
 [node name="Vorgarten" parent="Rooms" groups=["room"] instance=ExtResource( 2 )]
-position = Vector2( 0, -1632 )
-
-[node name="Wohnzimmer" parent="Rooms" groups=["room"] instance=ExtResource( 3 )]
 position = Vector2( 0, -1088 )
 
-[node name="Kueche" parent="Rooms" groups=["room"] instance=ExtResource( 1 )]
+[node name="Wohnzimmer" parent="Rooms" groups=["room"] instance=ExtResource( 3 )]
 position = Vector2( 0, -544 )
 
+[node name="Kueche" parent="Rooms" groups=["room"] instance=ExtResource( 1 )]
+
 [node name="Zimmer" parent="Rooms" groups=["room"] instance=ExtResource( 4 )]
+position = Vector2( 0, 544 )
 
 [node name="Player" parent="Rooms" instance=ExtResource( 6 )]
-position = Vector2( 112, 176 )
+position = Vector2( 208, 400 )
 
 [connection signal="change_room" from="Rooms/Vorgarten" to="." method="_on_Vorgarten_change_room"]
 [connection signal="change_room" from="Rooms/Wohnzimmer" to="." method="_on_Wohnzimmer_change_room"]
