@@ -1,4 +1,4 @@
-extends Area2D
+extends Activatable
 
 func start_action(player):
 	player.state = "in_action";
@@ -27,6 +27,3 @@ func start_action(player):
 	yield(MessageSystem.show_message("player", "I called " + person_to_phone.name + "."), "done");
 	
 	player.state = "idle";
-
-func end_action(player):
-	pass

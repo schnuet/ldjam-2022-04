@@ -150,7 +150,7 @@ func drop():
 	var areas_on_drop = get_areas_in_dir(look_direction);
 	for area in areas_on_drop:
 		if area.is_in_group("dropzone"):
-			area.drop(carried_pickup);
+			area.drop(carried_pickup, self);
 			dropped_on_area = true;
 	
 	if not dropped_on_area:
