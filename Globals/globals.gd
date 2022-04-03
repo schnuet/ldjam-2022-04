@@ -2,7 +2,7 @@ extends Node
 
 const GRID_SIZE = 32;
 
-var tv_channel = "none";
+var tv_channel = "off";
 var phoned_person = "none";
 
 func set_player_position(pos:Vector2):

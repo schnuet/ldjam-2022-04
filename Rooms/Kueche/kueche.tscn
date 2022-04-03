@@ -1,6 +1,6 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=57 format=2]
 
-[ext_resource path="res://Components/Activatable.gd" type="Script" id=1]
+[ext_resource path="res://Rooms/Kueche/Fridge.gd" type="Script" id=1]
 [ext_resource path="res://Components/Door.gd" type="Script" id=2]
 [ext_resource path="res://Components/Pickable.gd" type="Script" id=3]
 [ext_resource path="res://Rooms/Kueche/kueche.gd" type="Script" id=4]
@@ -16,6 +16,9 @@
 [ext_resource path="res://Rooms/Kueche/TelephoneTable.gd" type="Script" id=14]
 [ext_resource path="res://Rooms/Kueche/Oven.gd" type="Script" id=15]
 [ext_resource path="res://Rooms/Kueche/Sink.gd" type="Script" id=16]
+[ext_resource path="res://Rooms/Kueche/Mehl.png" type="Texture" id=17]
+[ext_resource path="res://Rooms/Kueche/Milch.png" type="Texture" id=18]
+[ext_resource path="res://Rooms/Kueche/Eier.png" type="Texture" id=19]
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 14, 14 )
@@ -209,14 +212,32 @@ visible = false
 polygon = PoolVector2Array( 640, 0, 640, 64, 608, 64, 448, 64, 448, 160, 416, 160, 416, 64, 288, 64, 288, 96, 128, 96, 128, 64, 96, 64, 96, 96, 32, 96, 32, 224, 448, 224, 448, 256, 32, 256, 32, 512, 768, 512, 864, 512, 864, 64, 640, 64, 640, 0, 960, 0, 960, 544, 0, 544, 0, 0 )
 
 [node name="Egg" type="Area2D" parent="TileMap"]
-position = Vector2( 368, 80 )
+position = Vector2( 368, 112 )
 script = ExtResource( 3 )
-
-[node name="Polygon2D" type="Polygon2D" parent="TileMap/Egg"]
-polygon = PoolVector2Array( 0, -15, -6, -11, -12, -4, -15, 7, -11, 14, -6, 16, 0, 16, 6, 16, 11, 14, 15, 7, 12, -4, 6, -11 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Egg"]
+visible = false
 shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="TileMap/Egg"]
+texture = ExtResource( 19 )
+
+[node name="Flour" type="Area2D" parent="TileMap"]
+position = Vector2( 304, 112 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Flour"]
+visible = false
+shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="TileMap/Flour"]
+texture = ExtResource( 17 )
 
 [node name="Fridge" type="Area2D" parent="TileMap" groups=["activatable", "undroppable"]]
 position = Vector2( 64, 96 )
@@ -238,6 +259,16 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Fridge/StaticBody2D"]
 shape = SubResource( 10 )
+
+[node name="Milk" type="Area2D" parent="TileMap/Fridge"]
+position = Vector2( -16, -112 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Fridge/Milk"]
+shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="TileMap/Fridge/Milk"]
+texture = ExtResource( 18 )
 
 [node name="Oven" type="Area2D" parent="TileMap" groups=["dropzone"]]
 position = Vector2( 160, 96 )
