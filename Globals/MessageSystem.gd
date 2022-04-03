@@ -34,7 +34,7 @@ func show_message_done():
 	waiting = false;
 	emit_signal("done");
 
-func _input(event):
+func _input(_event):
 	if not (writing or waiting):
 		return
 	if Input.is_action_just_pressed("action"):

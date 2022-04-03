@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/OptionsScreen/OptionsScreen.gd" type="Script" id=1]
+[ext_resource path="res://UI/OptionsScreen/ButtonTheme.tres" type="Theme" id=2]
+
+[node name="OptionsScreen" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color( 0, 0, 0, 0.188235 )
+polygon = PoolVector2Array( 0, 0, 0, 544, 960, 544, 960, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -111.0
+margin_top = -23.0
+margin_right = 111.0
+margin_bottom = 23.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+margin_right = 222.0
+margin_bottom = 46.0
+theme = ExtResource( 2 )
+text = "Turn on history channel"

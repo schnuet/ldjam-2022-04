@@ -11,5 +11,5 @@ func start_action(player):
 	get_parent().remove_child(self);
 	player.pickup(self);
 
-func end_action(player):
+func end_action(_player):
 	pass

@@ -19,21 +19,17 @@ func change_room(room_name:String, player_position:Vector2):
 	
 	var room = get_node("Rooms/" + room_name);
 	
-	activate_room(room, current_room);
+	activate_room(room);
 	current_room = room;
 
-func activate_room(room:Node2D, room_from):
-	var old_room_name = "";
-	if room_from:
-		old_room_name = room_from.name;
-	
+func activate_room(room:Node2D):
 	room.activate();
 	room.get_node("TileMap").add_child(player);
 
 func deactivate_room(room:Node2D):
 	room.deactivate();
 	var tilemap = room.get_node("TileMap");
-	if tilemap:
+	if tilemap and player.get_parent() == tilemap:
 		tilemap.remove_child(player);
 
 

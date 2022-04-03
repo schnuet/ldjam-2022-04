@@ -26,11 +26,11 @@ func start_action(p):
 		if player.global_position.y > global_position.y + $CollisionShape2D.shape.extents.y:
 			player_side = Vector2.UP
 
-func end_action(p):
+func end_action(_p):
 	action_down = false
 	
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if not is_moving and player and action_down:
 		if Input.is_action_pressed("right"):
 			move(Vector2.RIGHT);

@@ -14,7 +14,7 @@ var carried_pickup = null;
 
 signal change_room(room_name, player_position);
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if $MoveTween.is_active():
 		return;
 	
@@ -73,21 +73,34 @@ func _physics_process(delta):
 
 # MOVING
 
-func is_dir_free(dir:Vector2):
-	var bodies = [];
+func get_areas_in_dir(dir:Vector2):
 	var areas = [];
 	if dir == Vector2.LEFT:
-		bodies = $MoveColliders/ColliderLeft.get_overlapping_bodies()
 		areas = $MoveColliders/ColliderLeft.get_overlapping_areas()
 	if dir == Vector2.RIGHT:
-		bodies = $MoveColliders/ColliderRight.get_overlapping_bodies()
 		areas = $MoveColliders/ColliderRight.get_overlapping_areas()
 	if dir == Vector2.DOWN:
-		bodies = $MoveColliders/ColliderDown.get_overlapping_bodies()
 		areas = $MoveColliders/ColliderDown.get_overlapping_areas()
 	if dir == Vector2.UP:
-		bodies = $MoveColliders/ColliderUp.get_overlapping_bodies()
 		areas = $MoveColliders/ColliderUp.get_overlapping_areas()
+	return areas;
+
+func get_bodies_in_dir(dir:Vector2):
+	var bodies = [];
+	if dir == Vector2.LEFT:
+		bodies = $MoveColliders/ColliderLeft.get_overlapping_bodies()
+	if dir == Vector2.RIGHT:
+		bodies = $MoveColliders/ColliderRight.get_overlapping_bodies()
+	if dir == Vector2.DOWN:
+		bodies = $MoveColliders/ColliderDown.get_overlapping_bodies()
+	if dir == Vector2.UP:
+		bodies = $MoveColliders/ColliderUp.get_overlapping_bodies()
+	
+	return bodies;
+
+func is_dir_free(dir:Vector2):
+	var bodies = get_bodies_in_dir(dir);
+	var areas = get_areas_in_dir(dir);
 	
 	if bodies.size() > 0:
 		return false;
@@ -128,10 +141,21 @@ func drop():
 	if not carried_pickup:
 		return
 	$PickupPosition.remove_child(carried_pickup);
-	get_parent().add_child(carried_pickup);
-	carried_pickup.global_position = global_position + look_direction * Globals.GRID_SIZE;
-	carried_pickup = null;
 	
+	var dropped_on_area = false;
+	
+	var areas_on_drop = get_areas_in_dir(look_direction);
+	for area in areas_on_drop:
+		if area.is_in_group("dropzone"):
+			area.drop(carried_pickup);
+			dropped_on_area = true;
+	
+	if not dropped_on_area:
+		get_parent().add_child(carried_pickup);
+		carried_pickup.global_position = global_position + look_direction * Globals.GRID_SIZE;
+	
+	carried_pickup = null;
+
 
 func can_drop(dir:Vector2):
 	var bodies = [];
@@ -150,6 +174,11 @@ func can_drop(dir:Vector2):
 		areas = $MoveColliders/ColliderUp.get_overlapping_areas();
 	
 	for area in areas:
+		# ALWAYS drop on dropzones
+		if area.is_in_group("dropzone"):
+			return true;
+		if area.is_in_group("pickable"):
+			return false;
 		if area.is_in_group("movable"):
 			return false;
 		if area.is_in_group("undroppable"):

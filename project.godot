@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Hold Up Mom"
-run/main_scene="res://Scenes/02 - Game/Game.tscn"
+run/main_scene="res://Scenes/01 - Start/Start.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -35,6 +35,7 @@ config/icon="res://icon.png"
 Globals="*res://Globals/globals.gd"
 MessageSystem="*res://Globals/MessageSystem.tscn"
 MusicPlayer="*res://Globals/MusicPlayer.tscn"
+OptionsScreen="*res://UI/OptionsScreen/OptionsScreen.tscn"
 
 [display]
 

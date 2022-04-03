@@ -34,7 +34,7 @@ func update_rect():
 	else:
 		current_texture = texture_00;
 	
-	if $Control/NinePatchRect:
+	if is_inside_tree() and $Control/NinePatchRect:
 		$Control/NinePatchRect.texture = current_texture;
 		
 		var height = ceil(455 * value / 100);
