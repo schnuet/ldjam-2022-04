@@ -23,6 +23,7 @@ func start_action(player):
 		$CollisionShape2D.disabled = true;
 		global_position = Vector2(592, 304);
 		remove_child($StaticBody2D);
+		$AnimatedSprite.animation = "angry";
 		var parent = get_parent();
 		parent.remove_child(self);
 		parent.get_parent().add_child(self);

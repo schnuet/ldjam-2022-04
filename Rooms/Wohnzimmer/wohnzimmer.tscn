@@ -230,7 +230,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="AnimatedSprite" parent="TileMap/TV"]
-position = Vector2( 0, -32 )
+position = Vector2( 0, -48 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 17 )
 animation = "off"

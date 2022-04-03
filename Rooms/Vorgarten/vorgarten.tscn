@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Assets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Components/Door.gd" type="Script" id=2]
@@ -23,6 +23,59 @@ extents = Vector2( 32, 16 )
 extents = Vector2( 16, 16 )
 
 [sub_resource type="RectangleShape2D" id=9]
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 10 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 10 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 10 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 10 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 10 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 10 )
+region = Rect2( 192, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 10 )
+region = Rect2( 224, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 10 )
+region = Rect2( 256, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 10 )
+region = Rect2( 288, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=23]
+animations = [ {
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
+"loop": true,
+"name": "idle",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 21 ), SubResource( 22 ) ],
+"loop": true,
+"name": "angry",
+"speed": 8.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=10]
 
@@ -125,10 +178,13 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Kitty/StaticBody2D"]
 shape = SubResource( 9 )
 
-[node name="Sprite" type="Sprite" parent="TileMap/Kitty"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="TileMap/Kitty"]
 position = Vector2( 0, -16 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 10 )
+frames = SubResource( 23 )
+animation = "idle"
+frame = 6
+playing = true
 
 [node name="Sprinkler" type="Area2D" parent="TileMap"]
 position = Vector2( 400, 176 )
@@ -168,6 +224,9 @@ shape = SubResource( 11 )
 
 [node name="Tree" type="StaticBody2D" parent="TileMap"]
 position = Vector2( 608, 480 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Tree"]
 shape = SubResource( 12 )

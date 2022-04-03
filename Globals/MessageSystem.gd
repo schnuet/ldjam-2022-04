@@ -8,19 +8,26 @@ var waiting = false;
 var action_pressed = false;
 
 func _ready():
+	hide();
 	$Control/Label.percent_visible = 0;
 	$Control/Label.hide();
 	$Control/Tween.connect("tween_all_completed", self, "message_fully_visible");
 	$Control/Timer.connect("timeout", self, "show_message_done");
 
-func show_message(character_name:String, text:String, emotion:String = ""):
+func show_message(character_name:String, text:String, emotion:String = "happy"):
 	print(character_name, ":", text);
 	writing = true;
+	show();
 	$Control/Label.percent_visible = 0;
 	$Control/Label.text = text;
 	$Control/Label.show();
 	$Control/Tween.interpolate_property($Control/Label, "percent_visible", 0, 1, text.length() * 0.02, Tween.TRANS_LINEAR, Tween.EASE_IN, 0);
 	$Control/Tween.start();
+	
+	if character_name == "player":
+		character_name = "bob";
+	
+	$Control/AnimatedSprite.animation = character_name + "-" + emotion;
 	return self
 
 func message_fully_visible():
@@ -33,6 +40,7 @@ func show_message_done():
 	$Control/Label.percent_visible = 0;
 	waiting = false;
 	emit_signal("done");
+	hide();
 
 func _input(_event):
 	if not (writing or waiting):

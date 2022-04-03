@@ -1,6 +1,12 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Globals/MessageSystem.gd" type="Script" id=1]
+[ext_resource path="res://UI/MessageSystem/Faces/mom-neutral.png" type="Texture" id=2]
+[ext_resource path="res://UI/MessageSystem/Faces/bob-happy.png" type="Texture" id=3]
+[ext_resource path="res://UI/MessageSystem/Faces/bob-neutral.png" type="Texture" id=4]
+[ext_resource path="res://UI/MessageSystem/Faces/mom-mad.png" type="Texture" id=5]
+[ext_resource path="res://UI/MessageSystem/Faces/mom-happy.png" type="Texture" id=6]
+[ext_resource path="res://UI/MessageSystem/Faces/mom-mad-rechen-in-da-face.png" type="Texture" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
 content_margin_left = 10.0
@@ -16,6 +22,39 @@ corner_radius_bottom_left = 6
 
 [sub_resource type="Theme" id=2]
 Label/styles/normal = SubResource( 1 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "mom-neutral",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "mom-mad-rake",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "mom-happy",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "bob-happy",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "bob-neutral",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "mom-mad",
+"speed": 5.0
+} ]
 
 [node name="MessageSystem" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -37,3 +76,9 @@ text = "This is my great delay?"
 
 [node name="Timer" type="Timer" parent="Control"]
 one_shot = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Control"]
+position = Vector2( 768, 144 )
+scale = Vector2( 0.168129, 0.168129 )
+frames = SubResource( 3 )
+animation = "mom-happy"
