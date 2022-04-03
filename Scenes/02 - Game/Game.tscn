@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Rooms/Kueche/kueche.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Rooms/Vorgarten/vorgarten.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Rooms/Zimmer/zimmer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/02 - Game/Game.gd" type="Script" id=5]
 [ext_resource path="res://Components/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://UI/ProgressBar/ProgressBar.tscn" type="PackedScene" id=7]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 5 )
@@ -25,6 +26,8 @@ position = Vector2( 0, 544 )
 
 [node name="Player" parent="Rooms" instance=ExtResource( 6 )]
 position = Vector2( 208, 400 )
+
+[node name="ProgressBar" parent="." instance=ExtResource( 7 )]
 
 [connection signal="change_room" from="Rooms/Vorgarten" to="." method="_on_Vorgarten_change_room"]
 [connection signal="change_room" from="Rooms/Wohnzimmer" to="." method="_on_Wohnzimmer_change_room"]

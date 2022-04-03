@@ -4,6 +4,8 @@ extends Area2D
 
 func _ready():
 	add_to_group("activatable");
+	add_to_group("pickable");
+	
 
 func start_action(player):
 	get_parent().remove_child(self);

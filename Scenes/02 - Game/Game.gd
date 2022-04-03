@@ -9,7 +9,6 @@ func _ready():
 	make_rooms_inactive();
 	
 	$Rooms.remove_child(player);
-	
 	change_room("Kueche", Vector2(432, 304));
 
 func change_room(room_name:String, player_position:Vector2):

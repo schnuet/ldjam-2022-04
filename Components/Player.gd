@@ -4,7 +4,9 @@ onready var target:Vector2 = global_position;
 
 var state = "idle";
 var look_direction = Vector2.DOWN;
-var action_object = null
+
+var action_object = null; # possible to do action with (in range)
+var current_action_object = null; # in direct interaction
 
 var action_pressed = false;
 
@@ -13,6 +15,9 @@ var carried_pickup = null;
 signal change_room(room_name, player_position);
 
 func _physics_process(delta):
+	if $MoveTween.is_active():
+		return;
+	
 	if state == "moving_thing":
 		return;
 	
@@ -22,8 +27,9 @@ func _physics_process(delta):
 	# released action
 	if action_pressed and not Input.is_action_pressed("action"):
 		action_pressed = false;
-		if action_object:
-			action_object.end_action(self);
+		if current_action_object:
+			current_action_object.end_action(self);
+			current_action_object = null;
 	
 	if state != "idle":
 		return
@@ -46,6 +52,7 @@ func _physics_process(delta):
 			return;
 			
 		if action_object:
+			current_action_object = action_object;
 			action_object.start_action(self);
 			action_pressed = true;
 			return;
@@ -67,14 +74,28 @@ func _physics_process(delta):
 # MOVING
 
 func is_dir_free(dir:Vector2):
-	if dir == Vector2.LEFT and $MoveColliders/ColliderLeft.get_overlapping_bodies().size() > 0:
+	var bodies = [];
+	var areas = [];
+	if dir == Vector2.LEFT:
+		bodies = $MoveColliders/ColliderLeft.get_overlapping_bodies()
+		areas = $MoveColliders/ColliderLeft.get_overlapping_areas()
+	if dir == Vector2.RIGHT:
+		bodies = $MoveColliders/ColliderRight.get_overlapping_bodies()
+		areas = $MoveColliders/ColliderRight.get_overlapping_areas()
+	if dir == Vector2.DOWN:
+		bodies = $MoveColliders/ColliderDown.get_overlapping_bodies()
+		areas = $MoveColliders/ColliderDown.get_overlapping_areas()
+	if dir == Vector2.UP:
+		bodies = $MoveColliders/ColliderUp.get_overlapping_bodies()
+		areas = $MoveColliders/ColliderUp.get_overlapping_areas()
+	
+	if bodies.size() > 0:
 		return false;
-	if dir == Vector2.RIGHT and $MoveColliders/ColliderRight.get_overlapping_bodies().size() > 0:
-		return false;
-	if dir == Vector2.DOWN and $MoveColliders/ColliderDown.get_overlapping_bodies().size() > 0:
-		return false;
-	if dir == Vector2.UP and $MoveColliders/ColliderUp.get_overlapping_bodies().size() > 0:
-		return false;
+		
+	for area in areas:
+		if area.is_in_group("pickable") and carried_pickup != area:
+			return false;
+		
 	return true;
 
 func move(dir:Vector2):
