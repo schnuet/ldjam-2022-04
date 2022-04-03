@@ -30,6 +30,7 @@ func _physics_process(_delta):
 		if current_action_object:
 			current_action_object.end_action(self);
 			current_action_object = null;
+		return
 	
 	if state != "idle":
 		return
@@ -133,6 +134,8 @@ func _on_Tween_tween_all_completed():
 # PICKUP
 
 func pickup(item:Node2D):
+	if item.get_parent():
+		item.get_parent().remove_child(item);
 	$PickupPosition.add_child(item);
 	carried_pickup = item;
 	carried_pickup.position = Vector2.ZERO;
@@ -174,6 +177,8 @@ func can_drop(dir:Vector2):
 		areas = $MoveColliders/ColliderUp.get_overlapping_areas();
 	
 	for area in areas:
+		if area == carried_pickup:
+			continue;
 		# ALWAYS drop on dropzones
 		if area.is_in_group("dropzone"):
 			return true;

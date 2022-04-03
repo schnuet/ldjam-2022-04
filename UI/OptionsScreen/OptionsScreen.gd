@@ -11,6 +11,7 @@ func show_options(options:Array):
 	for option in options:
 		create_option(option);
 	
+	$VBoxContainer.set_anchors_and_margins_preset(Control.PRESET_CENTER,Control.PRESET_MODE_MINSIZE);
 	show();
 	
 	var first_button:Button = $VBoxContainer.get_children()[0];

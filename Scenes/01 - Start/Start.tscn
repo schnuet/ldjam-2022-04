@@ -53,30 +53,27 @@ script = ExtResource( 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -140.0
+margin_left = -122.5
 margin_top = 50.0
-margin_right = 140.0
-margin_bottom = 96.0
-custom_constants/separation = 54
-__meta__ = {
-"_edit_group_": true
-}
+margin_right = 122.5
+margin_bottom = 165.0
+custom_constants/separation = 15
 
-[node name="StartButton" type="Button" parent="CanvasLayer/HBoxContainer"]
-margin_right = 123.0
-margin_bottom = 46.0
+[node name="StartButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+margin_right = 245.0
+margin_bottom = 50.0
 theme = ExtResource( 2 )
 text = "START GAME"
 
-[node name="Credits" type="Button" parent="CanvasLayer/HBoxContainer"]
-margin_left = 177.0
-margin_right = 273.0
-margin_bottom = 46.0
+[node name="Credits" type="Button" parent="CanvasLayer/VBoxContainer"]
+margin_top = 65.0
+margin_right = 245.0
+margin_bottom = 115.0
 theme = ExtResource( 2 )
 text = "CREDITS"
 
@@ -110,6 +107,6 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="animation_finished" from="Title/IntroAnimation" to="." method="_on_IntroAnimation_animation_finished"]

@@ -23,7 +23,6 @@ func start_action(player):
 	
 	Globals.phoned_person = person_to_phone.id;
 	
-	
 	player.state = "talking";
 	yield(MessageSystem.show_message("player", "I called " + person_to_phone.name + "."), "done");
 	
