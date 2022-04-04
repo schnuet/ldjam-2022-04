@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://Rooms/Kueche/Fridge.gd" type="Script" id=1]
 [ext_resource path="res://Components/Door.gd" type="Script" id=2]
@@ -187,6 +187,11 @@ animations = [ {
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 48, 16 )
+
+[sub_resource type="Curve2D" id=45]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 720, 80, 0, 0, 0, 0, 720, 304, 0, 0, 0, 0, 80, 304, 0, 0, 0, 0, 80, 528 )
+}
 
 [node name="Kueche" type="Node2D" groups=["room"]]
 script = ExtResource( 4 )
@@ -556,5 +561,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="MomTarget" type="Position2D" parent="." groups=["mom-target"]]
-position = Vector2( 80, 496 )
+[node name="MomPaths" type="Node2D" parent="."]
+
+[node name="Path2D" type="Path2D" parent="MomPaths"]
+curve = SubResource( 45 )

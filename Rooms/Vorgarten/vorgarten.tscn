@@ -360,7 +360,6 @@ position = Vector2( 0, -16 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 23 )
 animation = "idle"
-frame = 6
 playing = true
 
 [node name="KittyMomAreas" type="Node2D" parent="TileMap"]
@@ -414,7 +413,7 @@ shape = SubResource( 24 )
 z_index = 1
 frames = SubResource( 27 )
 animation = "water"
-frame = 40
+frame = 1
 playing = true
 
 [node name="MomArea" type="Area2D" parent="TileMap/Sprinkler" groups=["mom-area"]]
@@ -462,7 +461,7 @@ shape = SubResource( 24 )
 z_index = 1
 frames = SubResource( 27 )
 animation = "water"
-frame = 40
+frame = 1
 playing = true
 
 [node name="MomAreaTop" type="Area2D" parent="TileMap/Sprinkler2"]

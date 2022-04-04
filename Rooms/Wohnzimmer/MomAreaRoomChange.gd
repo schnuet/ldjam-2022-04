@@ -4,6 +4,7 @@ func action():
 	var game = get_tree().get_nodes_in_group("game")[0];
 	var mom = get_tree().get_nodes_in_group("mom")[0];
 	
+	mom.active_waypoint = null;
 	mom.waypoints = [];
 	
 	mom.get_parent().remove_child(mom);
