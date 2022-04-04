@@ -9,6 +9,8 @@ var sprinkler_bottom_on = false;
 
 var said_living_room_comment = false;
 
+var cake_on_table = false;
+
 func set_player_position(pos:Vector2):
 	var player = get_tree().get_nodes_in_group("player")
 	

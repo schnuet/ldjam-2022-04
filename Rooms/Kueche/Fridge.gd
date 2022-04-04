@@ -6,6 +6,8 @@ func start_action(player):
 	player.state = "action";
 	
 	if has_milk:
+		player.state = "talking";
+		yield(MessageSystem.show_message("player", "There's milk here."), "done");
 		player.pickup($Milk);
 		has_milk = false;
 	else:

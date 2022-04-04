@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://Rooms/Kueche/Fridge.gd" type="Script" id=1]
 [ext_resource path="res://Components/Door.gd" type="Script" id=2]
@@ -21,9 +21,20 @@
 [ext_resource path="res://Rooms/Kueche/Eier.png" type="Texture" id=19]
 [ext_resource path="res://Rooms/Kueche/Kueche_mittelstueck.png" type="Texture" id=20]
 [ext_resource path="res://Rooms/Kueche/Kueche_endstueck.png" type="Texture" id=21]
+[ext_resource path="res://Rooms/Kueche/Counter.gd" type="Script" id=22]
+[ext_resource path="res://Rooms/Kueche/Kuchen.png" type="Texture" id=23]
+[ext_resource path="res://Rooms/Kueche/Bowl.gd" type="Script" id=24]
+[ext_resource path="res://Rooms/Kueche/Kueche_Ofen_backen.png" type="Texture" id=25]
+[ext_resource path="res://Rooms/Kueche/Table.gd" type="Script" id=26]
+[ext_resource path="res://Rooms/Kueche/Schüssel.png" type="Texture" id=27]
 
 [sub_resource type="RectangleShape2D" id=44]
 extents = Vector2( 32, 16 )
+
+[sub_resource type="RectangleShape2D" id=46]
+extents = Vector2( 10, 32 )
+
+[sub_resource type="RectangleShape2D" id=48]
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 14, 14 )
@@ -36,6 +47,14 @@ extents = Vector2( 32, 32 )
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 32, 32 )
+
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 25 )
+region = Rect2( 0, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=50]
+atlas = ExtResource( 25 )
+region = Rect2( 32, 0, 32, 64 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 9 )
@@ -56,6 +75,11 @@ animations = [ {
 "name": "out",
 "speed": 5.0
 }, {
+"frames": [ SubResource( 49 ), SubResource( 50 ) ],
+"loop": true,
+"name": "baking",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
 "name": "smoking",
@@ -64,6 +88,8 @@ animations = [ {
 
 [sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 32, 32 )
+
+[sub_resource type="RectangleShape2D" id=47]
 
 [sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 32, 32 )
@@ -99,12 +125,6 @@ animations = [ {
 
 [sub_resource type="RectangleShape2D" id=23]
 extents = Vector2( 32, 32 )
-
-[sub_resource type="RectangleShape2D" id=24]
-extents = Vector2( 96, 32 )
-
-[sub_resource type="RectangleShape2D" id=25]
-extents = Vector2( 16, 16 )
 
 [sub_resource type="RectangleShape2D" id=26]
 extents = Vector2( 32, 32 )
@@ -185,6 +205,15 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=25]
+extents = Vector2( 16, 16 )
+
+[sub_resource type="RectangleShape2D" id=51]
+extents = Vector2( 94, 30 )
+
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 96, 32 )
+
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 48, 16 )
 
@@ -211,7 +240,8 @@ format = 1
 [node name="kitchenpart" type="StaticBody2D" parent="Boden"]
 position = Vector2( 128, 96 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 
 [node name="Sprite" type="Sprite" parent="Boden/kitchenpart"]
@@ -226,7 +256,8 @@ shape = SubResource( 44 )
 [node name="kitchenpart2" type="StaticBody2D" parent="Boden"]
 position = Vector2( 384, 96 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 
 [node name="Sprite" type="Sprite" parent="Boden/kitchenpart2"]
@@ -241,7 +272,8 @@ shape = SubResource( 44 )
 [node name="kitchenpart3" type="StaticBody2D" parent="Boden"]
 position = Vector2( 320, 96 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 
 [node name="Sprite" type="Sprite" parent="Boden/kitchenpart3"]
@@ -249,6 +281,7 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boden/kitchenpart3"]
+visible = false
 position = Vector2( 0, 16 )
 shape = SubResource( 44 )
 
@@ -259,39 +292,95 @@ cell_y_sort = true
 format = 1
 tile_data = PoolIntArray( -131058, 2, 0, -131057, 2, 0, -131056, 2, 0, -131055, 2, 0, -131054, 2, 0, -65535, 2, 0, -65534, 2, 0, -65533, 2, 0, -65532, 2, 0, -65531, 2, 0, -65530, 2, 0, -65529, 2, 0, -65528, 2, 0, -65527, 2, 0, -65526, 2, 0, -65525, 2, 0, -65524, 2, 0, -65523, 2, 0, -65522, 2, 0, -65521, 2, 0, -65520, 2, 0, -65519, 2, 0, -65518, 2, 0, -65517, 2, 0, -65516, 2, 0, -65515, 2, 0, -65514, 2, 0, -65513, 2, 0, -65512, 2, 0, -65511, 2, 0, -65510, 2, 0, -65509, 2, 0, -65508, 2, 0, 0, 2, 0, 1, 2, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 2, 0, 6, 2, 0, 7, 2, 0, 8, 2, 0, 9, 2, 0, 10, 2, 0, 11, 2, 0, 12, 2, 0, 13, 2, 0, 14, 2, 0, 15, 2, 0, 16, 2, 0, 17, 2, 0, 18, 2, 0, 19, 2, 0, 20, 2, 0, 21, 2, 0, 24, 2, 0, 25, 2, 0, 26, 2, 0, 27, 2, 0, 28, 2, 0, 29, 2, 0, 65536, 2, 0, 65537, 2, 0, 65538, 2, 0, 65539, 2, 0, 65540, 2, 0, 65541, 2, 0, 65542, 2, 0, 65543, 2, 0, 65544, 2, 0, 65545, 2, 0, 65546, 2, 0, 65547, 2, 0, 65548, 2, 0, 65549, 2, 0, 65550, 2, 0, 65551, 2, 0, 65552, 2, 0, 65553, 2, 0, 65554, 2, 0, 65555, 2, 0, 65556, 2, 0, 65557, 2, 0, 65560, 2, 0, 65561, 2, 0, 65562, 2, 0, 65563, 2, 0, 65564, 2, 0, 65565, 2, 0, 131072, 2, 0, 131080, 9, 0, 131085, 2, 0, 131099, 2, 0, 131100, 2, 0, 131101, 2, 0, 196608, 2, 0, 196621, 2, 0, 196635, 2, 0, 196636, 2, 0, 196637, 2, 0, 262144, 2, 0, 262157, 2, 0, 262171, 2, 0, 262172, 2, 0, 262173, 2, 0, 327680, 2, 0, 327707, 2, 0, 327708, 2, 0, 327709, 2, 0, 393216, 2, 0, 393243, 2, 0, 393244, 2, 0, 393245, 2, 0, 458752, 2, 0, 458753, 2, 0, 458754, 2, 0, 458755, 2, 0, 458756, 2, 0, 458757, 2, 0, 458758, 2, 0, 458759, 2, 0, 458760, 2, 0, 458761, 2, 0, 458762, 2, 0, 458763, 2, 0, 458764, 2, 0, 458765, 2, 0, 458779, 2, 0, 458780, 2, 0, 458781, 2, 0, 524288, 2, 0, 524289, 2, 0, 524290, 2, 0, 524291, 2, 0, 524292, 2, 0, 524293, 2, 0, 524294, 2, 0, 524295, 2, 0, 524296, 2, 0, 524297, 2, 0, 524298, 2, 0, 524299, 2, 0, 524300, 2, 0, 524301, 2, 0, 524315, 2, 0, 524316, 2, 0, 524317, 2, 0, 589824, 2, 0, 589851, 2, 0, 589852, 2, 0, 589853, 2, 0, 655360, 2, 0, 655387, 2, 0, 655388, 2, 0, 655389, 2, 0, 720896, 2, 0, 720923, 2, 0, 720924, 2, 0, 720925, 2, 0, 786432, 2, 0, 786459, 2, 0, 786460, 2, 0, 786461, 2, 0, 851968, 2, 0, 851995, 2, 0, 851996, 2, 0, 851997, 2, 0, 917504, 2, 0, 917531, 2, 0, 917532, 2, 0, 917533, 2, 0, 983040, 2, 0, 983067, 2, 0, 983068, 2, 0, 983069, 2, 0, 1048576, 2, 0, 1048579, 2, 0, 1048580, 2, 0, 1048581, 2, 0, 1048582, 2, 0, 1048583, 2, 0, 1048584, 2, 0, 1048585, 2, 0, 1048586, 2, 0, 1048587, 2, 0, 1048588, 2, 0, 1048589, 2, 0, 1048590, 2, 0, 1048591, 2, 0, 1048592, 2, 0, 1048593, 2, 0, 1048594, 2, 0, 1048595, 2, 0, 1048596, 2, 0, 1048597, 2, 0, 1048598, 2, 0, 1048599, 2, 0, 1048600, 2, 0, 1048601, 2, 0, 1048602, 2, 0, 1048603, 2, 0, 1048604, 2, 0, 1048605, 2, 0, 1114112, 2, 0, 1114113, 2, 0, 1114114, 2, 0, 1114115, 2, 0, 1114116, 2, 0, 1114117, 2, 0, 1114118, 2, 0, 1114119, 2, 0, 1114120, 2, 0, 1114121, 2, 0, 1114122, 2, 0, 1114123, 2, 0, 1114124, 2, 0, 1114125, 2, 0, 1114126, 2, 0, 1114127, 2, 0, 1114128, 2, 0, 1114129, 2, 0, 1114130, 2, 0, 1114131, 2, 0, 1114132, 2, 0, 1114133, 2, 0, 1114134, 2, 0, 1114135, 2, 0, 1114136, 2, 0, 1114137, 2, 0, 1114138, 2, 0, 1114139, 2, 0, 1114140, 2, 0 )
 
+[node name="Counters" type="Node2D" parent="TileMap"]
+
+[node name="CounterWithBowl" type="Area2D" parent="TileMap/Counters" groups=["dropzone"]]
+position = Vector2( 304, 96 )
+script = ExtResource( 22 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Counters/CounterWithBowl"]
+shape = SubResource( 46 )
+
+[node name="Bowl" type="Area2D" parent="TileMap/Counters/CounterWithBowl"]
+position = Vector2( 0, -16 )
+script = ExtResource( 24 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Counters/CounterWithBowl/Bowl"]
+shape = SubResource( 48 )
+
+[node name="Sprite" type="Sprite" parent="TileMap/Counters/CounterWithBowl/Bowl"]
+texture = ExtResource( 27 )
+
+[node name="Counter2" type="Area2D" parent="TileMap/Counters" groups=["dropzone"]]
+position = Vector2( 336, 96 )
+script = ExtResource( 22 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Counters/Counter2"]
+shape = SubResource( 46 )
+
+[node name="Counter3" type="Area2D" parent="TileMap/Counters" groups=["dropzone"]]
+position = Vector2( 368, 96 )
+script = ExtResource( 22 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Counters/Counter3"]
+shape = SubResource( 46 )
+
+[node name="Eggs" type="Area2D" parent="TileMap/Counters/Counter3"]
+position = Vector2( 0, -16 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Counters/Counter3/Eggs"]
+visible = false
+shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="TileMap/Counters/Counter3/Eggs"]
+texture = ExtResource( 19 )
+offset = Vector2( 0, 3 )
+
+[node name="Counter4" type="Area2D" parent="TileMap/Counters" groups=["dropzone"]]
+position = Vector2( 400, 96 )
+script = ExtResource( 22 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Counters/Counter4"]
+shape = SubResource( 46 )
+
+[node name="Counter5" type="Area2D" parent="TileMap/Counters" groups=["dropzone"]]
+position = Vector2( 144, 96 )
+script = ExtResource( 22 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Counters/Counter5"]
+shape = SubResource( 46 )
+
+[node name="Counter6" type="Area2D" parent="TileMap/Counters" groups=["dropzone"]]
+position = Vector2( 112, 96 )
+script = ExtResource( 22 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Counters/Counter6"]
+shape = SubResource( 46 )
+
+[node name="Flour" type="Area2D" parent="TileMap/Counters/Counter6"]
+position = Vector2( 0, -16 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Counters/Counter6/Flour"]
+visible = false
+shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="TileMap/Counters/Counter6/Flour"]
+texture = ExtResource( 17 )
+offset = Vector2( 0, -5 )
+
 [node name="Undroppable" type="Area2D" parent="TileMap" groups=["undroppable"]]
 visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TileMap/Undroppable"]
 polygon = PoolVector2Array( 640, 0, 640, 64, 608, 64, 448, 64, 448, 160, 416, 160, 416, 64, 288, 64, 288, 96, 128, 96, 128, 64, 96, 64, 96, 96, 32, 96, 32, 224, 448, 224, 448, 256, 32, 256, 32, 512, 768, 512, 864, 512, 864, 64, 640, 64, 640, 0, 960, 0, 960, 544, 0, 544, 0, 0 )
-
-[node name="Egg" type="Area2D" parent="TileMap"]
-position = Vector2( 368, 80 )
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Egg"]
-visible = false
-shape = SubResource( 7 )
-
-[node name="Sprite" type="Sprite" parent="TileMap/Egg"]
-texture = ExtResource( 19 )
-
-[node name="Flour" type="Area2D" parent="TileMap"]
-position = Vector2( 112, 80 )
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Flour"]
-visible = false
-shape = SubResource( 7 )
-
-[node name="Sprite" type="Sprite" parent="TileMap/Flour"]
-texture = ExtResource( 17 )
 
 [node name="Fridge" type="Area2D" parent="TileMap" groups=["activatable", "undroppable"]]
 position = Vector2( 64, 96 )
@@ -322,6 +411,7 @@ script = ExtResource( 3 )
 shape = SubResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="TileMap/Fridge/Milk"]
+position = Vector2( 0, -3 )
 texture = ExtResource( 18 )
 
 [node name="Oven" type="Area2D" parent="TileMap" groups=["dropzone"]]
@@ -347,6 +437,24 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Oven/StaticBody2D"]
 shape = SubResource( 16 )
 
+[node name="Cake" type="Area2D" parent="TileMap/Oven"]
+position = Vector2( -16, -112 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Oven/Cake"]
+shape = SubResource( 47 )
+
+[node name="Sprite" type="Sprite" parent="TileMap/Oven/Cake"]
+texture = ExtResource( 23 )
+
+[node name="BakeTimer" type="Timer" parent="TileMap/Oven"]
+one_shot = true
+
+[node name="BurnTimer" type="Timer" parent="TileMap/Oven"]
+
 [node name="Sink" type="Area2D" parent="TileMap" groups=["activatable", "undroppable"]]
 position = Vector2( 256, 96 )
 script = ExtResource( 16 )
@@ -368,19 +476,26 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Sink/StaticBody2D"]
 shape = SubResource( 23 )
 
-[node name="Table" type="StaticBody2D" parent="TileMap" groups=["undroppable"]]
-position = Vector2( 448, 416 )
+[node name="TelephoneTable" type="Area2D" parent="TileMap" groups=["undroppable"]]
+position = Vector2( 576, 96 )
+script = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Table"]
-shape = SubResource( 24 )
+[node name="StaticBody2D" type="StaticBody2D" parent="TileMap/TelephoneTable"]
 
-[node name="Sprite" type="Sprite" parent="TileMap/Table"]
-position = Vector2( 0, -16 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 11 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/TelephoneTable/StaticBody2D"]
+shape = SubResource( 26 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/TelephoneTable"]
+shape = SubResource( 27 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="TileMap/TelephoneTable"]
+position = Vector2( 0, -32 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 43 )
+animation = "idle"
 
 [node name="Chair" type="StaticBody2D" parent="TileMap" groups=["undroppable"]]
 position = Vector2( 304, 432 )
@@ -438,31 +553,11 @@ position = Vector2( 0, -16 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 12 )
 
-[node name="TelephoneTable" type="Area2D" parent="TileMap" groups=["undroppable"]]
-position = Vector2( 576, 96 )
-script = ExtResource( 14 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody2D" type="StaticBody2D" parent="TileMap/TelephoneTable"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/TelephoneTable/StaticBody2D"]
-shape = SubResource( 26 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/TelephoneTable"]
-shape = SubResource( 27 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="TileMap/TelephoneTable"]
-position = Vector2( 0, -32 )
-scale = Vector2( 2, 2 )
-frames = SubResource( 43 )
-animation = "idle"
-
 [node name="kitchenpart4" type="StaticBody2D" parent="TileMap"]
 position = Vector2( 64, 224 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 
 [node name="Sprite" type="Sprite" parent="TileMap/kitchenpart4"]
@@ -480,7 +575,8 @@ shape = SubResource( 44 )
 [node name="kitchenpart5" type="StaticBody2D" parent="TileMap"]
 position = Vector2( 128, 224 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 
 [node name="Sprite" type="Sprite" parent="TileMap/kitchenpart5"]
@@ -498,7 +594,8 @@ shape = SubResource( 44 )
 [node name="kitchenpart6" type="StaticBody2D" parent="TileMap"]
 position = Vector2( 192, 224 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 
 [node name="Sprite" type="Sprite" parent="TileMap/kitchenpart6"]
@@ -516,7 +613,8 @@ shape = SubResource( 44 )
 [node name="kitchenpart7" type="StaticBody2D" parent="TileMap"]
 position = Vector2( 256, 224 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 
 [node name="Sprite" type="Sprite" parent="TileMap/kitchenpart7"]
@@ -534,7 +632,8 @@ shape = SubResource( 44 )
 [node name="kitchenpart8" type="StaticBody2D" parent="TileMap"]
 position = Vector2( 320, 224 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 
 [node name="Sprite" type="Sprite" parent="TileMap/kitchenpart8"]
@@ -548,6 +647,27 @@ region_rect = Rect2( 0, 0, 32, 16 )
 visible = false
 position = Vector2( 0, 16 )
 shape = SubResource( 44 )
+
+[node name="Table" type="Area2D" parent="TileMap" groups=["dropzone"]]
+position = Vector2( 448, 416 )
+script = ExtResource( 26 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Table"]
+shape = SubResource( 51 )
+
+[node name="Sprite" type="Sprite" parent="TileMap/Table"]
+position = Vector2( 0, -16 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 11 )
+
+[node name="Table" type="StaticBody2D" parent="TileMap/Table" groups=["undroppable"]]
+visible = false
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Table/Table"]
+shape = SubResource( 24 )
 
 [node name="DoorWohnzimmer" type="Area2D" parent="." groups=["door"]]
 position = Vector2( 720, 48 )
@@ -565,3 +685,6 @@ __meta__ = {
 
 [node name="Path2D" type="Path2D" parent="MomPaths"]
 curve = SubResource( 45 )
+
+[connection signal="timeout" from="TileMap/Oven/BakeTimer" to="TileMap/Oven" method="_on_BakeTimer_timeout"]
+[connection signal="timeout" from="TileMap/Oven/BurnTimer" to="TileMap/Oven" method="_on_BurnTimer_timeout"]

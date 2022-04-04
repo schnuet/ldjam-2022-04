@@ -59,10 +59,11 @@ func _physics_process(_delta):
 					drop();
 					action_pressed = true;
 				return;
-				
-			if action_object:
-				current_action_object = action_object;
-				action_object.start_action(self);
+			
+			var available_action = action_in_range();
+			if available_action:
+				current_action_object = available_action;
+				available_action.start_action(self);
 				action_pressed = true;
 				return;
 		
@@ -172,23 +173,33 @@ func pickup(item:Node2D):
 func drop():
 	if not carried_pickup:
 		return
-	$PickupPosition.remove_child(carried_pickup);
 	
 	var dropped_on_area = false;
 	
 	var areas_on_drop = get_areas_in_dir(look_direction);
 	for area in areas_on_drop:
 		if area.is_in_group("dropzone"):
-			area.drop(carried_pickup, self);
-			dropped_on_area = true;
+			var no_drop_message = area.can_drop(carried_pickup);
+			if no_drop_message == "true":
+				$PickupPosition.remove_child(carried_pickup);
+				dropped_on_area = area;
+				area.drop(carried_pickup, self);
+				carried_pickup = null;
+			else:
+				state = "talking";
+				yield(MessageSystem.show_message("player", no_drop_message, "neutral"), "done");
+				state = "idle";
+				return false;
 	
 	# drop on floor:
 	if not dropped_on_area:
+		$PickupPosition.remove_child(carried_pickup);
 		get_parent().add_child(carried_pickup);
 		carried_pickup.global_position = global_position + look_direction * Globals.GRID_SIZE;
 		carried_pickup.on_drop();
+		carried_pickup = null;
 	
-	carried_pickup = null;
+	
 
 
 func can_drop(dir:Vector2):
@@ -218,6 +229,19 @@ func can_drop(dir:Vector2):
 
 
 # ACTION AREA
+
+func action_in_range():
+	if action_object:
+		return action_object;
+
+	var areas = [];
+	areas.append_array($MoveColliders/ColliderLeft.get_overlapping_areas());
+	areas.append_array($MoveColliders/ColliderRight.get_overlapping_areas());
+	areas.append_array($MoveColliders/ColliderDown.get_overlapping_areas());
+	areas.append_array($MoveColliders/ColliderUp.get_overlapping_areas());
+	for area in areas:
+		if area.is_in_group("activatable"):
+			return area;
 
 func _on_ActionArea_area_entered(area):
 	if area.is_in_group("activatable"):
