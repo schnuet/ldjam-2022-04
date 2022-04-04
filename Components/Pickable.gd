@@ -1,6 +1,6 @@
 class_name Pickable
 
-extends Area2D
+extends Activatable
 
 func _ready():
 	add_to_group("activatable");

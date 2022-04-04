@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scenes/01 - Start/Start.gd" type="Script" id=1]
 [ext_resource path="res://UI/OptionsScreen/ButtonTheme.tres" type="Theme" id=2]
-[ext_resource path="res://Scenes/01 - Start/hold_up_mom_platzhalter_titlescreen.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/01 - Start/hold_up_mom_titlescreen_animiert_final.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/01 - Start/IntroAnimation/IntroAnimationFrames.tres" type="SpriteFrames" id=4]
 [ext_resource path="res://Scenes/01 - Start/IdleAnimation/02 Titel - Idle_00003.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/01 - Start/IdleAnimation/02 Titel - Idle_00006.png" type="Texture" id=6]
@@ -77,8 +77,13 @@ margin_bottom = 115.0
 theme = ExtResource( 2 )
 text = "CREDITS"
 
-[node name="HoldUpMomPlatzhalterTitlescreen" type="Sprite" parent="."]
-position = Vector2( 480, 270 )
+[node name="TitleScreenControl" type="Node2D" parent="."]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="HoldUpMomTitlescreenAnimiertFinal" type="Sprite" parent="TitleScreenControl"]
+position = Vector2( 480, 784 )
 texture = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true
@@ -94,10 +99,6 @@ __meta__ = {
 [node name="IntroAnimation" type="AnimatedSprite" parent="Title"]
 position = Vector2( 480, 270 )
 frames = ExtResource( 4 )
-frame = 61
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="IdleAnimation" type="AnimatedSprite" parent="Title"]
 visible = false
@@ -107,6 +108,15 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+autostart = true
+
+[node name="MoveTween" type="Tween" parent="."]
+
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="animation_finished" from="Title/IntroAnimation" to="." method="_on_IntroAnimation_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="tween_all_completed" from="MoveTween" to="." method="_on_MoveTween_tween_all_completed"]

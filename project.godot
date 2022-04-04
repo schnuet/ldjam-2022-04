@@ -24,7 +24,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Components/MomArea.gd"
 }, {
-"base": "Area2D",
+"base": "Activatable",
 "class": "Pickable",
 "language": "GDScript",
 "path": "res://Components/Pickable.gd"

@@ -10,5 +10,7 @@ func action():
 	mom.get_parent().remove_child(mom);
 	game.get_node("Rooms/Kueche/TileMap").add_child(mom);
 	mom.position = Vector2(720, 80);
+	
+	print("change room from kueche");
 	game.change_room("Kueche", Vector2.ZERO);
 	return .action();

@@ -100,7 +100,7 @@ func handle_area(area):
 	area.action();
 	yield(area, "action_done");
 
-	if area.get_node("newPath"):
+	if area.has_node("newPath"):
 		get_waypoints_from_path(area.get_node("newPath"));
 	
 	area.deactivate();

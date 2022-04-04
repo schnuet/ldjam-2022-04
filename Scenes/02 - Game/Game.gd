@@ -9,7 +9,9 @@ func _ready():
 	make_rooms_inactive();
 	
 	$Rooms.remove_child(player);
-	change_room("Kueche", Vector2(432, 304)); # change to Kueche
+	change_room("Zimmer", Vector2(432, 304)); # change to Kueche
+	
+	yield(MessageSystem.show_message("player", "Oh no! Mom comes home and my room is dirty! I've got to delay her arrival!", "neutral"), "done");
 
 func change_room(room_name:String, player_position:Vector2):
 	if current_room:
@@ -22,6 +24,7 @@ func change_room(room_name:String, player_position:Vector2):
 	
 	activate_room(room);
 	current_room = room;
+	print("change room", room.name);
 
 func activate_room(room:Node2D):
 	room.activate();
@@ -46,6 +49,7 @@ func _on_ProgressBar_done():
 	# delete player
 	player.deactivate();
 	
+	print("progressbar done");
 	change_room("Vorgarten", Vector2.ZERO);
 	MusicPlayer.play_music("mom");
 	

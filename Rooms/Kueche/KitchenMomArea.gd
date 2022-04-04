@@ -15,3 +15,5 @@ func action():
 	
 	if oven.cake_burned:
 		yield(MessageSystem.show_message("mom", "THIS LITTLE BRAT! Oh, I can´t wait to get to his room!", "mad"), "done");
+
+	return .action();

@@ -1,4 +1,4 @@
-extends Area2D
+extends Activatable
 
 var chosen_channel_id = "off";
 

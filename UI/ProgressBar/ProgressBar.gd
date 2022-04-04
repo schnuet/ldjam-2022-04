@@ -12,7 +12,7 @@ var current_texture = texture_80;
 export var value = 100 setget set_value;
 
 func _ready():
-	$Tween.interpolate_property(self, "value", 100, 0, 120, Tween.TRANS_LINEAR);
+	$Tween.interpolate_property(self, "value", 100, 0, 150, Tween.TRANS_LINEAR);
 	$Tween.start();
 	
 	update_rect();

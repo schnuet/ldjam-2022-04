@@ -152,6 +152,7 @@ func on_move_done():
 	var areas = get_overlapping_areas()
 	for area in areas:
 		if area.is_in_group("door"):
+			print("player change room", area)
 			emit_signal("change_room", area.room_name, area.player_position);
 			global_position = area.player_position;
 
@@ -246,7 +247,9 @@ func action_in_range():
 func _on_ActionArea_area_entered(area):
 	if area.is_in_group("activatable"):
 		action_object = area;
+		action_object.highlight_arrow();
 
 func _on_ActionArea_area_exited(area):
 	if area == action_object:
+		action_object.dehighlight_arrow();
 		action_object = null

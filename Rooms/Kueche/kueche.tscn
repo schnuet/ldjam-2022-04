@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=82 format=2]
 
 [ext_resource path="res://Rooms/Kueche/Fridge.gd" type="Script" id=1]
 [ext_resource path="res://Components/Door.gd" type="Script" id=2]
@@ -29,6 +29,8 @@
 [ext_resource path="res://Rooms/Kueche/Schüssel.png" type="Texture" id=27]
 [ext_resource path="res://Rooms/Kueche/KitchenMomArea.gd" type="Script" id=28]
 [ext_resource path="res://Rooms/Kueche/TelephoneMomArea.gd" type="Script" id=29]
+[ext_resource path="res://Rooms/Kueche/MomAreaEnd.gd" type="Script" id=31]
+[ext_resource path="res://Rooms/Kueche/CakeMomArea.gd" type="Script" id=32]
 
 [sub_resource type="RectangleShape2D" id=44]
 extents = Vector2( 32, 16 )
@@ -96,10 +98,6 @@ extents = Vector2( 32, 32 )
 [sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 32, 32 )
 
-[sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 10 )
-region = Rect2( 0, 0, 32, 32 )
-
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 10 )
 region = Rect2( 32, 0, 32, 32 )
@@ -112,17 +110,21 @@ region = Rect2( 64, 0, 32, 32 )
 atlas = ExtResource( 10 )
 region = Rect2( 96, 0, 32, 32 )
 
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 32, 32 )
+
 [sub_resource type="SpriteFrames" id=22]
 animations = [ {
-"frames": [ SubResource( 21 ) ],
-"loop": true,
-"name": "stopped",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
 "loop": true,
 "name": "running",
 "speed": 15.0
+}, {
+"frames": [ SubResource( 21 ) ],
+"loop": true,
+"name": "stopped",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=23]
@@ -221,13 +223,21 @@ extents = Vector2( 96, 32 )
 
 [sub_resource type="RectangleShape2D" id=53]
 
+[sub_resource type="RectangleShape2D" id=55]
+
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 48, 16 )
+
+[sub_resource type="RectangleShape2D" id=54]
+extents = Vector2( 32, 14 )
 
 [sub_resource type="Curve2D" id=45]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 720, 80, 0, 0, 0, 0, 720, 176, 0, 0, 0, 0, 496, 176, 0, 0, 0, 0, 496, 336, 0, 0, 0, 0, 80, 336, 0, 0, 0, 0, 80, 528 )
 }
+
+[sub_resource type="RectangleShape2D" id=56]
+extents = Vector2( 32, 16 )
 
 [node name="Kueche" type="Node2D" groups=["room"]]
 script = ExtResource( 4 )
@@ -444,7 +454,7 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Oven/StaticBody2D"]
 shape = SubResource( 16 )
 
-[node name="Cake" type="Area2D" parent="TileMap/Oven"]
+[node name="Cake" type="Area2D" parent="TileMap/Oven" groups=["cake"]]
 position = Vector2( -16, -112 )
 script = ExtResource( 3 )
 __meta__ = {
@@ -686,9 +696,17 @@ shape = SubResource( 24 )
 [node name="KitchenMomArea" type="Area2D" parent="TileMap"]
 position = Vector2( 496, 176 )
 script = ExtResource( 28 )
+enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/KitchenMomArea"]
 shape = SubResource( 53 )
+
+[node name="CakeMomArea" type="Area2D" parent="TileMap"]
+position = Vector2( 496, 304 )
+script = ExtResource( 32 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/CakeMomArea"]
+shape = SubResource( 55 )
 
 [node name="DoorWohnzimmer" type="Area2D" parent="." groups=["door"]]
 position = Vector2( 720, 48 )
@@ -702,10 +720,31 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="DoorKinderzimmer" type="Area2D" parent="." groups=["door"]]
+position = Vector2( 64, 528 )
+script = ExtResource( 2 )
+room_name = "Zimmer"
+player_position = Vector2( 80, 80 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorKinderzimmer"]
+shape = SubResource( 54 )
+
 [node name="MomPaths" type="Node2D" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="Path2D" type="Path2D" parent="MomPaths"]
 curve = SubResource( 45 )
+
+[node name="MomAreaEnd" type="Area2D" parent="."]
+position = Vector2( 64, 528 )
+script = ExtResource( 31 )
+enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MomAreaEnd"]
+shape = SubResource( 56 )
 
 [connection signal="timeout" from="TileMap/Oven/BakeTimer" to="TileMap/Oven" method="_on_BakeTimer_timeout"]
 [connection signal="timeout" from="TileMap/Oven/BurnTimer" to="TileMap/Oven" method="_on_BurnTimer_timeout"]
