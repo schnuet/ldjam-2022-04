@@ -15,7 +15,11 @@ var carried_pickup = null;
 signal change_room(room_name, player_position);
 
 func _physics_process(_delta):
-	if $MoveTween.is_active():
+	if is_moving():
+		return;
+		
+	if state == "in_action":
+		$AnimatedSprite.animation = "idle";
 		return;
 	
 	if state == "moving_thing":
@@ -32,47 +36,52 @@ func _physics_process(_delta):
 			current_action_object = null;
 		return
 	
-	if state != "idle":
-		return
-	
-	# Look direction update
-	if Input.is_action_pressed("down"):
-		look_direction = Vector2.DOWN;
-	elif Input.is_action_pressed("up"):
-		look_direction = Vector2.UP;
-	elif Input.is_action_pressed("left"):
-		look_direction = Vector2.LEFT;
-	elif Input.is_action_pressed("right"):
-		look_direction = Vector2.RIGHT;
-	
-	if Input.is_action_pressed("action") and not action_pressed:
-		if carried_pickup:
-			if can_drop(look_direction):
-				drop();
-				action_pressed = true;
-			return;
-			
-		if action_object:
-			current_action_object = action_object;
-			action_object.start_action(self);
-			action_pressed = true;
-			return;
-	
-	# Moving
-	var move_action_is_pressed = (
-		Input.is_action_pressed("down") or
-		Input.is_action_pressed("up") or
-		Input.is_action_pressed("left") or
-		Input.is_action_pressed("right")
-	);
-	if move_action_is_pressed:
-		if is_dir_free(look_direction):
-			move(look_direction)
+	if state == "idle" or state == "moving":
+		# Look direction update
+		if Input.is_action_pressed("down"):
+			look_direction = Vector2.DOWN;
+		elif Input.is_action_pressed("up"):
+			look_direction = Vector2.UP;
+		elif Input.is_action_pressed("left"):
+			look_direction = Vector2.LEFT;
+		elif Input.is_action_pressed("right"):
+			look_direction = Vector2.RIGHT;
 		
-		$ActionArea.position = look_direction * Globals.GRID_SIZE;
+		if Input.is_action_pressed("action") and not action_pressed:
+			if carried_pickup:
+				if can_drop(look_direction):
+					drop();
+					action_pressed = true;
+				return;
+				
+			if action_object:
+				current_action_object = action_object;
+				action_object.start_action(self);
+				action_pressed = true;
+				return;
+		
+		# Moving
+		var move_action_is_pressed = (
+			Input.is_action_pressed("down") or
+			Input.is_action_pressed("up") or
+			Input.is_action_pressed("left") or
+			Input.is_action_pressed("right")
+		);
+		if move_action_is_pressed:
+			if is_dir_free(look_direction):
+				move(look_direction)
+			
+			$ActionArea.position = look_direction * Globals.GRID_SIZE;
+			return;
+	
+	state = "idle";
+	$AnimatedSprite.animation = "idle";
 
 
 # MOVING
+
+func is_moving():
+	return $MoveTween.is_active();
 
 func get_areas_in_dir(dir:Vector2):
 	var areas = [];
@@ -118,14 +127,25 @@ func move(dir:Vector2):
 	state = "moving";
 	$MoveTween.start();
 	
+	if dir == Vector2.LEFT:
+		$AnimatedSprite.scale.x = -abs($AnimatedSprite.scale.x);
+	elif dir == Vector2.RIGHT:
+		$AnimatedSprite.scale.x = abs($AnimatedSprite.scale.x);
+	
+	if dir == Vector2.UP:
+		if $AnimatedSprite.animation != "walk_back":
+			$AnimatedSprite.animation = "walk_back";
+	else:
+		if $AnimatedSprite.animation != "walk_side":
+			$AnimatedSprite.animation = "walk_side";
+	
 func on_move_done():
-	state = "idle";
+	# activate END areas
 	var areas = get_overlapping_areas()
 	for area in areas:
 		if area.is_in_group("door"):
 			emit_signal("change_room", area.room_name, area.player_position);
 			global_position = area.player_position;
-			
 	
 func _on_Tween_tween_all_completed():
 	on_move_done();
