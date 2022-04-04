@@ -38,6 +38,7 @@ func show_message(character_name:String, text:String, emotion:String = "happy"):
 	$Control/SpeechBubble.show();
 	$Control/SpeechBubble.play();
 	$Control/Head.show();
+	$Control/Head.play();
 	
 	return self
 
