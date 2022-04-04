@@ -39,9 +39,11 @@ func start_action(player):
 	if chosen_channel_id != "off":
 		$Sprite.animation = "on";
 		yield(MessageSystem.show_message("player", "I turned on the " + chosen_channel.name + "."), "done");
+		$TVMomArea.activate();
 	else:
 		$Sprite.animation = "off";
 		yield(MessageSystem.show_message("player", "I turned the TV off."), "done");
+		$TVMomArea.deactivate();
 	
 	Globals.tv_channel = chosen_channel.id;
 	

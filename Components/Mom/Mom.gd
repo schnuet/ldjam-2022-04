@@ -3,14 +3,14 @@ extends Area2D
 signal arrived;
 
 export var delay = 0;
-
-var state = "idle";
 export var active = true;
 
+var state = "idle";
 var waypoints = [];
 var active_waypoint = null;
-
 var handling_area = false;
+
+var looking_dir = Vector2.DOWN;
 
 func _ready():
 	if !active:
@@ -37,9 +37,18 @@ func _process(_delta):
 		if waypoints.size() == 0:
 			emit_signal("arrived");
 			return;
-	
-	var area = get_current_mom_area();
+
+	var area = get_next_mom_area();
 	if area:
+		$AnimatedSprite.stop();
+		$AnimatedSprite.frame = 0;
+		handle_area(area);
+		return;
+	
+	area = get_current_mom_area();
+	if area:
+		$AnimatedSprite.stop();
+		$AnimatedSprite.frame = 0;
 		handle_area(area);
 		return;
 	
@@ -52,9 +61,11 @@ func _process(_delta):
 	if active_waypoint != null:
 		var dir = get_waypoint_dir(active_waypoint);
 		
-		print(active_waypoint, global_position, dir);
-		
-		move(dir);
+		if dir == looking_dir:
+			print(active_waypoint, global_position, dir);
+			move(dir);
+		else:
+			looking_dir = dir;
 
 
 func activate():
@@ -71,6 +82,12 @@ func get_current_mom_area():
 	var areas = get_overlapping_areas();
 	for area in areas:
 		if area.is_in_group("mom-area") and area.enabled:
+			return area;
+
+func get_next_mom_area():
+	var areas = $FrontArea.get_overlapping_areas();
+	for area in areas:
+		if area.is_in_group("mom-area") and area.enabled and area.standing_before:
 			return area;
 
 func handle_area(area):
@@ -146,11 +163,16 @@ func move(dir:Vector2):
 	if dir == Vector2.ZERO:
 		return;
 	
+	looking_dir = dir;
+	
 	state = "moving";
 	
 	var move_target = global_position + dir * Globals.GRID_SIZE;
 	$MoveTween.interpolate_property(self, "global_position", global_position, move_target, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0);
 	$MoveTween.start();
+	
+	if !$AnimatedSprite.playing:
+		$AnimatedSprite.play();
 	
 	if dir == Vector2.LEFT:
 		$AnimatedSprite.scale.x = -abs($AnimatedSprite.scale.x);

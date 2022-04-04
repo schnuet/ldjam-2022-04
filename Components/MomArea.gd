@@ -9,6 +9,7 @@ export var text = "";
 export var emotion = "neutral";
 
 export var enabled = false;
+export var standing_before = false;
 
 var action_timer = Timer.new();
 

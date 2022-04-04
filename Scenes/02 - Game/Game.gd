@@ -49,6 +49,7 @@ func _on_ProgressBar_done():
 	change_room("Vorgarten", Vector2.ZERO);
 	MusicPlayer.play_music("mom");
 	
+	yield(MessageSystem.show_message("mom", "Bob! I'm back!", "happy"), "done");
+	
 	$Rooms/Vorgarten/TileMap/Mom.activate();
 	
-	yield(MessageSystem.show_message("mom", "Bob! I'm back!", "happy"), "done");

@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=2]
+[gd_scene load_steps=108 format=2]
 
 [ext_resource path="res://Assets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Components/Door.gd" type="Script" id=2]
@@ -64,6 +64,7 @@
 [ext_resource path="res://Rooms/Vorgarten/WaterCan.gd" type="Script" id=62]
 [ext_resource path="res://Rooms/Vorgarten/FlowerPot.gd" type="Script" id=63]
 [ext_resource path="res://Rooms/Vorgarten/Rasensprenger.png" type="Texture" id=64]
+[ext_resource path="res://Rooms/Vorgarten/MomAreaRoomChange.gd" type="Script" id=65]
 
 [sub_resource type="RectangleShape2D" id=7]
 
@@ -224,6 +225,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 32, 32 )
 
+[sub_resource type="RectangleShape2D" id=47]
+extents = Vector2( 32, 16 )
+
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 48, 16 )
 
@@ -356,7 +360,7 @@ position = Vector2( 0, -16 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 23 )
 animation = "idle"
-frame = 3
+frame = 6
 playing = true
 
 [node name="KittyMomAreas" type="Node2D" parent="TileMap"]
@@ -410,7 +414,7 @@ shape = SubResource( 24 )
 z_index = 1
 frames = SubResource( 27 )
 animation = "water"
-frame = 38
+frame = 40
 playing = true
 
 [node name="MomArea" type="Area2D" parent="TileMap/Sprinkler" groups=["mom-area"]]
@@ -458,7 +462,7 @@ shape = SubResource( 24 )
 z_index = 1
 frames = SubResource( 27 )
 animation = "water"
-frame = 38
+frame = 40
 playing = true
 
 [node name="MomAreaTop" type="Area2D" parent="TileMap/Sprinkler2"]
@@ -502,15 +506,26 @@ shape = SubResource( 12 )
 position = Vector2( 0, -93 )
 texture = ExtResource( 13 )
 
+[node name="MomAreaRoomChange" type="Area2D" parent="TileMap"]
+position = Vector2( 64, 528 )
+script = ExtResource( 65 )
+enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/MomAreaRoomChange"]
+shape = SubResource( 47 )
+
 [node name="Mom" parent="TileMap" instance=ExtResource( 14 )]
-visible = false
 position = Vector2( 688, 80 )
-delay = 10
+delay = 3
 active = false
 
 [node name="DoorWohnzimmer" type="Area2D" parent="." groups=["door"]]
+visible = false
 position = Vector2( 80, 528 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 room_name = "Wohnzimmer"
 player_position = Vector2( 80, 80 )
 

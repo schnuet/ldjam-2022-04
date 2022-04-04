@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://Components/Door.gd" type="Script" id=1]
 [ext_resource path="res://Components/MoveableObject.tscn" type="PackedScene" id=2]
@@ -12,28 +12,62 @@
 [ext_resource path="res://Rooms/Wohnzimmer/TV.png" type="Texture" id=10]
 [ext_resource path="res://Rooms/Wohnzimmer/TV.gd" type="Script" id=11]
 [ext_resource path="res://Rooms/Wohnzimmer/Pflanze.png" type="Texture" id=12]
+[ext_resource path="res://Rooms/Wohnzimmer/FurnitureMomArea.gd" type="Script" id=13]
+[ext_resource path="res://Rooms/Wohnzimmer/MomAreaRoomChange.gd" type="Script" id=14]
+[ext_resource path="res://Rooms/Wohnzimmer/FurnitureMomarea.gd" type="Script" id=15]
+[ext_resource path="res://Rooms/Wohnzimmer/TVMomArea.gd" type="Script" id=16]
 
 [sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 16, 16 )
 
+[sub_resource type="RectangleShape2D" id=25]
+extents = Vector2( 14, 14 )
+
+[sub_resource type="RectangleShape2D" id=26]
+extents = Vector2( 14, 14 )
+
+[sub_resource type="RectangleShape2D" id=27]
+
+[sub_resource type="RectangleShape2D" id=28]
+
 [sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 32, 32 )
+
+[sub_resource type="RectangleShape2D" id=29]
+extents = Vector2( 30, 30 )
+
+[sub_resource type="RectangleShape2D" id=30]
+extents = Vector2( 30, 30 )
+
+[sub_resource type="RectangleShape2D" id=31]
+extents = Vector2( 30, 30 )
+
+[sub_resource type="RectangleShape2D" id=32]
 extents = Vector2( 32, 32 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 144, 32 )
 
+[sub_resource type="RectangleShape2D" id=33]
+extents = Vector2( 144, 32 )
+
 [sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 48, 32 )
+
+[sub_resource type="RectangleShape2D" id=34]
 extents = Vector2( 48, 32 )
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 48, 32 )
 
+[sub_resource type="RectangleShape2D" id=35]
+extents = Vector2( 48, 32 )
+
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 64, 32 )
 
-[sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 10 )
-region = Rect2( 0, 0, 96, 80 )
+[sub_resource type="RectangleShape2D" id=36]
+extents = Vector2( 64, 32 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 10 )
@@ -51,17 +85,21 @@ region = Rect2( 288, 0, 96, 80 )
 atlas = ExtResource( 10 )
 region = Rect2( 384, 0, 96, 80 )
 
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 96, 80 )
+
 [sub_resource type="SpriteFrames" id=17]
 animations = [ {
-"frames": [ SubResource( 18 ) ],
-"loop": true,
-"name": "off",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
 "loop": true,
 "name": "on",
 "speed": 8.0
+}, {
+"frames": [ SubResource( 18 ) ],
+"loop": true,
+"name": "off",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=11]
@@ -70,11 +108,22 @@ extents = Vector2( 64, 32 )
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 64, 32 )
 
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 64, 192 )
+
+[sub_resource type="RectangleShape2D" id=37]
+extents = Vector2( 32, 16 )
+
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 48, 16 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 48, 16 )
+
+[sub_resource type="Curve2D" id=23]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 80, 112, 0, 0, 0, 0, 80, 208, 0, 0, 0, 0, 208, 208, 0, 0, 0, 0, 208, 304, 0, 0, 0, 0, 496, 304, 0, 0, 0, 0, 496, 400, 0, 0, 0, 0, 592, 400, 0, 0, 0, 0, 592, 464, 0, 0, 0, 0, 720, 464, 0, 0, 0, 0, 720, 528 )
+}
 
 [node name="Wohnzimmer" type="Node2D" groups=["room"]]
 script = ExtResource( 4 )
@@ -101,6 +150,17 @@ position = Vector2( 0, -6 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 12 )
 
+[node name="FurnitureMomArea" type="Area2D" parent="TileMap/Plant"]
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_group_": true
+}
+enabled = true
+standing_before = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Plant/FurnitureMomArea"]
+shape = SubResource( 25 )
+
 [node name="Plant2" parent="TileMap" instance=ExtResource( 2 )]
 position = Vector2( 368, 176 )
 
@@ -111,6 +171,17 @@ shape = SubResource( 12 )
 position = Vector2( 0, -6 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 12 )
+
+[node name="FurnitureMomArea" type="Area2D" parent="TileMap/Plant2"]
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_group_": true
+}
+enabled = true
+standing_before = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Plant2/FurnitureMomArea"]
+shape = SubResource( 26 )
 
 [node name="Plant3" parent="TileMap" instance=ExtResource( 2 )]
 position = Vector2( 528, 176 )
@@ -123,6 +194,14 @@ position = Vector2( 0, -6 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 12 )
 
+[node name="FurnitureMomArea" type="Area2D" parent="TileMap/Plant3"]
+script = ExtResource( 13 )
+enabled = true
+standing_before = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Plant3/FurnitureMomArea"]
+shape = SubResource( 27 )
+
 [node name="Plant4" parent="TileMap" instance=ExtResource( 2 )]
 position = Vector2( 624, 208 )
 
@@ -133,6 +212,14 @@ shape = SubResource( 12 )
 position = Vector2( 0, -6 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 12 )
+
+[node name="FurnitureMomArea" type="Area2D" parent="TileMap/Plant4"]
+script = ExtResource( 13 )
+enabled = true
+standing_before = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Plant4/FurnitureMomArea"]
+shape = SubResource( 28 )
 
 [node name="Regal" parent="TileMap" instance=ExtResource( 2 )]
 position = Vector2( 320, 96 )
@@ -145,6 +232,14 @@ position = Vector2( 0, -16 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 9 )
 
+[node name="FurnitureMomArea" type="Area2D" parent="TileMap/Regal"]
+script = ExtResource( 13 )
+enabled = true
+standing_before = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Regal/FurnitureMomArea"]
+shape = SubResource( 29 )
+
 [node name="Regal2" parent="TileMap" instance=ExtResource( 2 )]
 position = Vector2( 224, 96 )
 
@@ -156,10 +251,19 @@ position = Vector2( 0, -16 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 9 )
 
+[node name="FurnitureMomArea" type="Area2D" parent="TileMap/Regal2"]
+script = ExtResource( 13 )
+enabled = true
+standing_before = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Regal2/FurnitureMomArea"]
+shape = SubResource( 30 )
+
 [node name="Regal3" parent="TileMap" instance=ExtResource( 2 )]
 position = Vector2( 96, 320 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Regal3"]
+visible = false
 shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="TileMap/Regal3"]
@@ -167,16 +271,33 @@ position = Vector2( 0, -16 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 9 )
 
+[node name="FurnitureMomArea" type="Area2D" parent="TileMap/Regal3"]
+script = ExtResource( 13 )
+enabled = true
+standing_before = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Regal3/FurnitureMomArea"]
+shape = SubResource( 31 )
+
 [node name="Regal4" parent="TileMap" instance=ExtResource( 2 )]
 position = Vector2( 128, 416 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Regal4"]
+visible = false
 shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="TileMap/Regal4"]
 position = Vector2( 0, -16 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 9 )
+
+[node name="FurnitureMomArea" type="Area2D" parent="TileMap/Regal4"]
+script = ExtResource( 13 )
+enabled = true
+standing_before = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Regal4/FurnitureMomArea"]
+shape = SubResource( 32 )
 
 [node name="Sofa" parent="TileMap" instance=ExtResource( 2 )]
 position = Vector2( 464, 256 )
@@ -189,6 +310,14 @@ position = Vector2( 0, -16 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 6 )
 
+[node name="FurnitureMomArea" type="Area2D" parent="TileMap/Sofa"]
+script = ExtResource( 13 )
+enabled = true
+standing_before = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Sofa/FurnitureMomArea"]
+shape = SubResource( 33 )
+
 [node name="Sessel1" parent="TileMap" instance=ExtResource( 2 )]
 position = Vector2( 272, 384 )
 
@@ -199,6 +328,14 @@ shape = SubResource( 8 )
 position = Vector2( 0, -16 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 7 )
+
+[node name="FurnitureMomArea" type="Area2D" parent="TileMap/Sessel1"]
+script = ExtResource( 13 )
+enabled = true
+standing_before = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Sessel1/FurnitureMomArea"]
+shape = SubResource( 34 )
 
 [node name="Sessel2" parent="TileMap" instance=ExtResource( 2 )]
 position = Vector2( 688, 384 )
@@ -211,6 +348,14 @@ position = Vector2( 0, -16 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 7 )
 
+[node name="FurnitureMomArea" type="Area2D" parent="TileMap/Sessel2"]
+script = ExtResource( 13 )
+enabled = true
+standing_before = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Sessel2/FurnitureMomArea"]
+shape = SubResource( 35 )
+
 [node name="Kommode" parent="TileMap" instance=ExtResource( 2 )]
 position = Vector2( 544, 96 )
 
@@ -221,6 +366,14 @@ shape = SubResource( 7 )
 position = Vector2( 0, -16 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
+
+[node name="FurnitureMomArea" type="Area2D" parent="TileMap/Kommode"]
+script = ExtResource( 15 )
+enabled = true
+standing_before = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Kommode/FurnitureMomArea"]
+shape = SubResource( 36 )
 
 [node name="TV" type="Area2D" parent="TileMap" groups=["activatable"]]
 position = Vector2( 512, 480 )
@@ -248,6 +401,21 @@ __meta__ = {
 visible = false
 shape = SubResource( 10 )
 
+[node name="TVMomArea" type="Area2D" parent="TileMap/TV"]
+position = Vector2( 0, -192 )
+script = ExtResource( 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/TV/TVMomArea"]
+shape = SubResource( 24 )
+
+[node name="MomAreaRoomChange" type="Area2D" parent="TileMap"]
+position = Vector2( 736, 528 )
+script = ExtResource( 14 )
+enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/MomAreaRoomChange"]
+shape = SubResource( 37 )
+
 [node name="DoorVorgarten" type="Area2D" parent="." groups=["door"]]
 position = Vector2( 80, 48 )
 script = ExtResource( 1 )
@@ -272,5 +440,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="MomTarget" type="Position2D" parent="." groups=["mom-target"]]
-position = Vector2( 720, 528 )
+[node name="MomPaths" type="Node2D" parent="."]
+
+[node name="Path2D" type="Path2D" parent="MomPaths"]
+curve = SubResource( 23 )

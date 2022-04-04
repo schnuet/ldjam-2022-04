@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Globals/MessageSystem.gd" type="Script" id=1]
 [ext_resource path="res://UI/MessageSystem/Faces/mom-neutral.png" type="Texture" id=2]
@@ -7,29 +7,42 @@
 [ext_resource path="res://UI/MessageSystem/Faces/mom-mad.png" type="Texture" id=5]
 [ext_resource path="res://UI/MessageSystem/Faces/mom-happy.png" type="Texture" id=6]
 [ext_resource path="res://UI/MessageSystem/Faces/mom-mad-rechen-in-da-face.png" type="Texture" id=7]
+[ext_resource path="res://Theme/Fonts/Heavitas.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://UI/MessageSystem/SpeechBubble/hold_up_mom_sprechblasen_00004.png" type="Texture" id=9]
+[ext_resource path="res://UI/MessageSystem/SpeechBubble/hold_up_mom_sprechblasen_00009.png" type="Texture" id=10]
+[ext_resource path="res://UI/MessageSystem/SpeechBubble/hold_up_mom_sprechblasen_00003.png" type="Texture" id=11]
+[ext_resource path="res://UI/MessageSystem/SpeechBubble/hold_up_mom_sprechblasen_00001.png" type="Texture" id=12]
+[ext_resource path="res://UI/MessageSystem/SpeechBubble/hold_up_mom_sprechblasen_00014.png" type="Texture" id=13]
+[ext_resource path="res://UI/MessageSystem/SpeechBubble/hold_up_mom_sprechblasen_00016.png" type="Texture" id=14]
+[ext_resource path="res://UI/MessageSystem/SpeechBubble/hold_up_mom_sprechblasen_00005.png" type="Texture" id=15]
+[ext_resource path="res://UI/MessageSystem/SpeechBubble/hold_up_mom_sprechblasen_00010.png" type="Texture" id=16]
+[ext_resource path="res://UI/MessageSystem/SpeechBubble/hold_up_mom_sprechblasen_00015.png" type="Texture" id=17]
+[ext_resource path="res://UI/MessageSystem/SpeechBubble/hold_up_mom_sprechblasen_00008.png" type="Texture" id=18]
+[ext_resource path="res://UI/MessageSystem/SpeechBubble/hold_up_mom_sprechblasen_00002.png" type="Texture" id=19]
+[ext_resource path="res://UI/MessageSystem/SpeechBubble/hold_up_mom_sprechblasen_00013.png" type="Texture" id=20]
+[ext_resource path="res://UI/MessageSystem/SpeechBubble/hold_up_mom_sprechblasen_00012.png" type="Texture" id=21]
+[ext_resource path="res://UI/MessageSystem/SpeechBubble/hold_up_mom_sprechblasen_00006.png" type="Texture" id=22]
+[ext_resource path="res://UI/MessageSystem/SpeechBubble/hold_up_mom_sprechblasen_00007.png" type="Texture" id=23]
+[ext_resource path="res://UI/MessageSystem/SpeechBubble/hold_up_mom_sprechblasen_00011.png" type="Texture" id=24]
 
-[sub_resource type="StyleBoxFlat" id=1]
-content_margin_left = 10.0
-content_margin_right = 10.0
-content_margin_top = 5.0
-content_margin_bottom = 5.0
-bg_color = Color( 0.48, 0.072, 0.072, 1 )
-border_color = Color( 0.45098, 0.45098, 0.45098, 1 )
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 12 ), ExtResource( 19 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 18 ), ExtResource( 10 ), ExtResource( 16 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 20 ), ExtResource( 13 ), ExtResource( 17 ), ExtResource( 14 ) ],
+"loop": false,
+"name": "open",
+"speed": 35.0
+} ]
 
-[sub_resource type="Theme" id=2]
-Label/styles/normal = SubResource( 1 )
+[sub_resource type="DynamicFont" id=5]
+size = 24
+font_data = ExtResource( 8 )
+
+[sub_resource type="Theme" id=6]
+Label/colors/font_color = Color( 0.952941, 0.588235, 0.301961, 1 )
+Label/fonts/font = SubResource( 5 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "mom-happy",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
 "name": "mom-neutral",
@@ -54,6 +67,11 @@ animations = [ {
 "loop": true,
 "name": "mom-mad-rake",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "mom-happy",
+"speed": 5.0
 } ]
 
 [node name="MessageSystem" type="CanvasLayer"]
@@ -63,22 +81,31 @@ script = ExtResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
+[node name="SpeechBubble" type="AnimatedSprite" parent="Control"]
+position = Vector2( 320, 144 )
+frames = SubResource( 4 )
+animation = "open"
+frame = 15
+
 [node name="Label" type="Label" parent="Control"]
-margin_left = 416.0
-margin_top = 64.0
-margin_right = 581.0
-margin_bottom = 88.0
-size_flags_horizontal = 8
-theme = SubResource( 2 )
+margin_left = 64.0
+margin_top = 84.0
+margin_right = 576.0
+margin_bottom = 176.0
+size_flags_vertical = 1
+theme = SubResource( 6 )
 text = "This is my great delay?"
+autowrap = true
 
 [node name="Tween" type="Tween" parent="Control"]
 
 [node name="Timer" type="Timer" parent="Control"]
 one_shot = true
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Control"]
-position = Vector2( 768, 144 )
+[node name="Head" type="AnimatedSprite" parent="Control"]
+position = Vector2( 784, 144 )
 scale = Vector2( 0.168129, 0.168129 )
 frames = SubResource( 3 )
 animation = "mom-happy"
+
+[connection signal="animation_finished" from="Control/SpeechBubble" to="." method="_on_SpeechBubble_animation_finished"]

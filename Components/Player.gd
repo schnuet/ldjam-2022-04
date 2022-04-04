@@ -23,10 +23,6 @@ func _physics_process(_delta):
 		
 	if is_moving():
 		return;
-		
-	if state == "in_action":
-		$AnimatedSprite.animation = "idle";
-		return;
 	
 	if state == "moving_thing":
 		return;
@@ -41,6 +37,10 @@ func _physics_process(_delta):
 			current_action_object.end_action(self);
 			current_action_object = null;
 		return
+	
+	if state == "in_action":
+		$AnimatedSprite.animation = "idle";
+		return;
 	
 	if state == "idle" or state == "moving":
 		# Look direction update
@@ -75,6 +75,7 @@ func _physics_process(_delta):
 		);
 		if move_action_is_pressed:
 			if is_dir_free(look_direction):
+				state = "moving";
 				move(look_direction)
 			
 			$ActionArea.position = look_direction * Globals.GRID_SIZE;
@@ -125,7 +126,6 @@ func is_dir_free(dir:Vector2):
 	return true;
 
 func move(dir:Vector2):
-	state = "moving";
 	var move_target = global_position + dir * Globals.GRID_SIZE;
 	$MoveTween.interpolate_property(self, "global_position", global_position, move_target, 0.15, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0);
 	$MoveTween.start();
@@ -141,6 +141,10 @@ func move(dir:Vector2):
 	else:
 		if $AnimatedSprite.animation != "walk_side":
 			$AnimatedSprite.animation = "walk_side";
+
+func _on_Tween_tween_all_completed():
+	if state == "moving":
+		on_move_done();
 	
 func on_move_done():
 	# activate END areas
@@ -149,9 +153,7 @@ func on_move_done():
 		if area.is_in_group("door"):
 			emit_signal("change_room", area.room_name, area.player_position);
 			global_position = area.player_position;
-	
-func _on_Tween_tween_all_completed():
-	on_move_done();
+
 
 func is_moving():
 	return $MoveTween.is_active();

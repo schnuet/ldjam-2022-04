@@ -7,6 +7,7 @@ var waiting = false;
 
 var action_pressed = false;
 var char_talking = "player";
+var char_text = "";
 
 func _ready():
 	hide();
@@ -16,22 +17,35 @@ func _ready():
 	$Control/Timer.connect("timeout", self, "show_message_done");
 
 func show_message(character_name:String, text:String, emotion:String = "happy"):
-	print(character_name, ":", text);
-	writing = true;
-	show();
-	$Control/Label.percent_visible = 0;
-	$Control/Label.text = text;
-	$Control/Label.show();
-	$Control/Tween.interpolate_property($Control/Label, "percent_visible", 0, 1, text.length() * 0.02, Tween.TRANS_LINEAR, Tween.EASE_IN, 0);
-	$Control/Tween.start();
-	
 	if character_name == "player":
 		character_name = "bob";
 	
 	char_talking = character_name;
+	$Control/Head.animation = character_name + "-" + emotion;
 	
-	$Control/AnimatedSprite.animation = character_name + "-" + emotion;
+	$Control/Label.percent_visible = 0;
+	$Control/Label.text = text;
+	
+	if character_name == "bob":
+		$Control/Head.position.x = 746;
+	else:
+		$Control/Head.position.x = 784;
+	
+	print(character_name, ":", text);
+	writing = true;
+	show();
+	$Control/SpeechBubble.frame = 0;
+	$Control/SpeechBubble.show();
+	$Control/SpeechBubble.play();
+	$Control/Head.show();
+	
 	return self
+
+func _on_SpeechBubble_animation_finished():
+	$Control/Label.show();
+	$Control/Tween.interpolate_property($Control/Label, "percent_visible", 0, 1, $Control/Label.text.length() * 0.02, Tween.TRANS_LINEAR, Tween.EASE_IN, 0);
+	$Control/Tween.start();
+	
 
 func message_fully_visible():
 	$Control/Timer.start(3);
@@ -39,6 +53,8 @@ func message_fully_visible():
 	waiting = true;
 	
 func show_message_done():
+	$Control/SpeechBubble.hide();
+	$Control/Head.hide();
 	$Control/Label.hide();
 	$Control/Label.percent_visible = 0;
 	waiting = false;

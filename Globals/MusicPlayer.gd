@@ -14,7 +14,7 @@ func play_music(music_name:String):
 	stop();
 	
 	if music_name == "mom":
-		stream = title_theme;
+		stream = mom_theme;
 	if music_name == "title":
 		stream = title_theme;
 		
