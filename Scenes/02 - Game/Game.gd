@@ -9,13 +9,14 @@ func _ready():
 	make_rooms_inactive();
 	
 	$Rooms.remove_child(player);
-	change_room("Kueche", Vector2(432, 304));
+	change_room("Kueche", Vector2(432, 304)); # change to Kueche
 
 func change_room(room_name:String, player_position:Vector2):
 	if current_room:
 		deactivate_room(current_room);
 	
-	player.global_position = player_position;
+	if player_position != Vector2.ZERO:
+		player.global_position = player_position;
 	
 	var room = get_node("Rooms/" + room_name);
 	
@@ -37,22 +38,17 @@ func make_rooms_inactive():
 	for room in rooms:
 		deactivate_room(room);
 
-
-func _on_Vorgarten_change_room(room_name, player_position:Vector2):
-	change_room(room_name, player_position);
-
-
-func _on_Kueche_change_room(room_name, player_position:Vector2):
-	change_room(room_name, player_position);
-
-
-func _on_Wohnzimmer_change_room(room_name, player_position:Vector2):
-	change_room(room_name, player_position);
-
-
-func _on_Zimmer_change_room(room_name, player_position:Vector2):
-	change_room(room_name, player_position);
-
-
 func _on_Player_change_room(room_name, player_position):
 	change_room(room_name, player_position);
+
+
+func _on_ProgressBar_done():
+	# delete player
+	player.deactivate();
+	
+	change_room("Vorgarten", Vector2.ZERO);
+	MusicPlayer.play_music("mom");
+	
+	$Rooms/Vorgarten/TileMap/Mom.activate();
+	
+	yield(MessageSystem.show_message("mom", "Bob! I'm back!", "happy"), "done");

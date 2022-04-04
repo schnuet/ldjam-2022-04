@@ -13,3 +13,9 @@ func start_action(player):
 
 func end_action(_player):
 	pass
+
+func on_drop():
+	pass
+
+func on_pickup():
+	pass

@@ -1,11 +1,11 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=106 format=2]
 
 [ext_resource path="res://Assets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Components/Door.gd" type="Script" id=2]
 [ext_resource path="res://Rooms/Vorgarten/Garden.png" type="Texture" id=3]
 [ext_resource path="res://Rooms/Vorgarten/vorgarten.gd" type="Script" id=4]
 [ext_resource path="res://Rooms/Vorgarten/Schuppen.gd" type="Script" id=5]
-[ext_resource path="res://Components/Pickable.gd" type="Script" id=6]
+[ext_resource path="res://Rooms/Vorgarten/Rake.gd" type="Script" id=6]
 [ext_resource path="res://Rooms/Vorgarten/Kitty.gd" type="Script" id=7]
 [ext_resource path="res://Rooms/Wohnzimmer/Pflanze.png" type="Texture" id=8]
 [ext_resource path="res://Rooms/Vorgarten/Sprinkler.gd" type="Script" id=9]
@@ -13,8 +13,67 @@
 [ext_resource path="res://Rooms/Vorgarten/Rechen.png" type="Texture" id=11]
 [ext_resource path="res://Rooms/Vorgarten/Giesskanne.png" type="Texture" id=12]
 [ext_resource path="res://Rooms/Vorgarten/Tree.png" type="Texture" id=13]
+[ext_resource path="res://Components/Mom/Mom.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00061.png" type="Texture" id=15]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00060.png" type="Texture" id=16]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00062.png" type="Texture" id=17]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00059.png" type="Texture" id=18]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00056.png" type="Texture" id=19]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00057.png" type="Texture" id=20]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00058.png" type="Texture" id=21]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00042.png" type="Texture" id=22]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00043.png" type="Texture" id=23]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00045.png" type="Texture" id=24]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00046.png" type="Texture" id=25]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00048.png" type="Texture" id=26]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00049.png" type="Texture" id=27]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00050.png" type="Texture" id=28]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00051.png" type="Texture" id=29]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00052.png" type="Texture" id=30]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00053.png" type="Texture" id=31]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00041.png" type="Texture" id=32]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00047.png" type="Texture" id=33]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00054.png" type="Texture" id=34]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00055.png" type="Texture" id=35]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00044.png" type="Texture" id=36]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00031.png" type="Texture" id=37]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00025.png" type="Texture" id=38]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00028.png" type="Texture" id=39]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00029.png" type="Texture" id=40]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00030.png" type="Texture" id=41]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00021.png" type="Texture" id=42]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00023.png" type="Texture" id=43]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00024.png" type="Texture" id=44]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00026.png" type="Texture" id=45]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00022.png" type="Texture" id=46]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00027.png" type="Texture" id=47]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00032.png" type="Texture" id=48]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00033.png" type="Texture" id=49]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00034.png" type="Texture" id=50]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00035.png" type="Texture" id=51]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00036.png" type="Texture" id=52]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00038.png" type="Texture" id=53]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00039.png" type="Texture" id=54]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00040.png" type="Texture" id=55]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler/Sprinkler_00037.png" type="Texture" id=56]
+[ext_resource path="res://Components/MomArea.gd" type="Script" id=57]
+[ext_resource path="res://Rooms/Vorgarten/kitty2.gd" type="Script" id=58]
+[ext_resource path="res://Rooms/Vorgarten/Sprinkler2.gd" type="Script" id=59]
+[ext_resource path="res://Rooms/Vorgarten/MomAreaBottom.gd" type="Script" id=60]
+[ext_resource path="res://Rooms/Vorgarten/MomAreaTop.gd" type="Script" id=61]
+[ext_resource path="res://Rooms/Vorgarten/WaterCan.gd" type="Script" id=62]
+[ext_resource path="res://Rooms/Vorgarten/FlowerPot.gd" type="Script" id=63]
+[ext_resource path="res://Rooms/Vorgarten/Rasensprenger.png" type="Texture" id=64]
 
 [sub_resource type="RectangleShape2D" id=7]
+
+[sub_resource type="RectangleShape2D" id=40]
+
+[sub_resource type="RectangleShape2D" id=38]
+extents = Vector2( 16, 16 )
+
+[sub_resource type="RectangleShape2D" id=39]
+extents = Vector2( 45, 45 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 32, 16 )
@@ -77,9 +136,90 @@ animations = [ {
 "speed": 8.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=30]
+extents = Vector2( 13, 13 )
+
+[sub_resource type="Curve2D" id=31]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 224 )
+}
+
+[sub_resource type="RectangleShape2D" id=32]
+
+[sub_resource type="Curve2D" id=33]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -448, 0, 0, 0, 0, 0, -448, 32 )
+}
+
 [sub_resource type="RectangleShape2D" id=10]
 
 [sub_resource type="RectangleShape2D" id=11]
+
+[sub_resource type="CircleShape2D" id=24]
+radius = 110.0
+
+[sub_resource type="SpriteFrames" id=27]
+animations = [ {
+"frames": [ ExtResource( 42 ), ExtResource( 46 ), ExtResource( 43 ), ExtResource( 44 ), ExtResource( 38 ), ExtResource( 45 ), ExtResource( 47 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 37 ), ExtResource( 48 ), ExtResource( 49 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 56 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 32 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 36 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 33 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 18 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "water",
+"speed": 25.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=28]
+extents = Vector2( 14, 14 )
+
+[sub_resource type="Curve2D" id=29]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 0, 0, 0, 0, -288, 128, 0, 0, 0, 0, -288, 192, 0, 0, 0, 0, -448, 192, 0, 0, 0, 0, -448, 352 )
+}
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 64 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 64 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 64 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 64 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 64 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=46]
+animations = [ {
+"frames": [ SubResource( 41 ) ],
+"loop": true,
+"name": "stopped",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ) ],
+"loop": true,
+"name": "running",
+"speed": 8.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=36]
+
+[sub_resource type="Curve2D" id=37]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -96, 0, 0, 0, 0, 0, -96, 64, 0, 0, 0, 0, -160, 64, 0, 0, 0, 0, -160, 224 )
+}
+
+[sub_resource type="Curve2D" id=34]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -192, 0, 0, 0, 0, -256, -192, 0, 0, 0, 0, -256, -128, 0, 0, 0, 0, -320, -128, 0, 0, 0, 0, -320, 32 )
+}
+
+[sub_resource type="RectangleShape2D" id=35]
 
 [sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 32, 32 )
@@ -87,7 +227,12 @@ extents = Vector2( 32, 32 )
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 48, 16 )
 
-[node name="Vorgarten" type="Node2D"]
+[sub_resource type="Curve2D" id=26]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 688, 80, 0, 0, 0, 0, 688, 176, 0, 0, 0, 0, 496, 176, 0, 0, 0, 0, 496, 272, 0, 0, 0, 0, 240, 272, 0, 0, 0, 0, 240, 368, 0, 0, 0, 0, 80, 368, 0, 0, 0, 0, 80, 528 )
+}
+
+[node name="Vorgarten" type="Node2D" groups=["room"]]
 script = ExtResource( 4 )
 
 [node name="Boden" type="TileMap" parent="."]
@@ -111,7 +256,7 @@ tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 cell_y_sort = true
 format = 1
-tile_data = PoolIntArray( -65507, 2, 0, 0, 2, 0, 1, 2, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 2, 0, 11, 2, 0, 12, 2, 0, 13, 2, 0, 14, 2, 0, 15, 2, 0, 16, 2, 0, 17, 2, 0, 18, 2, 0, 19, 2, 0, 20, 2, 0, 21, 2, 0, 22, 2, 0, 23, 2, 0, 27, 2, 0, 28, 2, 0, 29, 2, 0, 65536, 2, 0, 65537, 2, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 65543, 1, 0, 65544, 1, 0, 65545, 1, 0, 65546, 2, 0, 65547, 2, 0, 65548, 2, 0, 65549, 2, 0, 65550, 2, 0, 65551, 2, 0, 65552, 2, 0, 65553, 2, 0, 65554, 2, 0, 65555, 2, 0, 65556, 2, 0, 65557, 2, 0, 65558, 2, 0, 65559, 2, 0, 65563, 2, 0, 65564, 2, 0, 65565, 2, 0, 131072, 2, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131080, 1, 0, 131081, 1, 0, 131095, 2, 0, 131099, 2, 0, 131100, 2, 0, 131101, 2, 0, 131102, 2, 0, 196608, 2, 0, 196610, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 196616, 1, 0, 196617, 1, 0, 196631, 2, 0, 196635, 2, 0, 196636, 2, 0, 196637, 2, 0, 196638, 2, 0, 262144, 2, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 262153, 1, 0, 262167, 2, 0, 262171, 2, 0, 262172, 2, 0, 262173, 2, 0, 262174, 2, 0, 327680, 2, 0, 327703, 2, 0, 327707, 2, 0, 327708, 2, 0, 327709, 2, 0, 327710, 2, 0, 393216, 2, 0, 393239, 2, 0, 393243, 2, 0, 393244, 2, 0, 393246, 2, 0, 458752, 2, 0, 458779, 2, 0, 458780, 2, 0, 458782, 2, 0, 524288, 2, 0, 524315, 2, 0, 524316, 2, 0, 524317, 2, 0, 589824, 2, 0, 589851, 2, 0, 589852, 2, 0, 589853, 2, 0, 655360, 2, 0, 655387, 2, 0, 655388, 2, 0, 655389, 2, 0, 720896, 2, 0, 720923, 2, 0, 720924, 2, 0, 720925, 2, 0, 786432, 2, 0, 786459, 2, 0, 786460, 2, 0, 786461, 2, 0, 851968, 2, 0, 851995, 2, 0, 851996, 2, 0, 851997, 2, 0, 917504, 2, 0, 917522, 1, 0, 917523, 1, 0, 917531, 2, 0, 917532, 2, 0, 917533, 2, 0, 983040, 2, 0, 983058, 1, 0, 983059, 1, 0, 983067, 2, 0, 983068, 2, 0, 983069, 2, 0, 1048576, 2, 0, 1048579, 2, 0, 1048580, 2, 0, 1048581, 2, 0, 1048582, 2, 0, 1048583, 2, 0, 1048584, 2, 0, 1048585, 2, 0, 1048586, 2, 0, 1048587, 2, 0, 1048588, 2, 0, 1048589, 2, 0, 1048590, 2, 0, 1048591, 2, 0, 1048592, 2, 0, 1048593, 2, 0, 1048594, 2, 0, 1048595, 2, 0, 1048596, 2, 0, 1048597, 2, 0, 1048598, 2, 0, 1048599, 2, 0, 1048603, 2, 0, 1048604, 2, 0, 1048605, 2, 0 )
+tile_data = PoolIntArray( -262145, 2, 0, -65507, 2, 0, 0, 2, 0, 1, 2, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 2, 0, 11, 2, 0, 12, 2, 0, 13, 2, 0, 14, 2, 0, 15, 2, 0, 16, 2, 0, 17, 2, 0, 18, 2, 0, 19, 2, 0, 20, 2, 0, 21, 2, 0, 22, 2, 0, 23, 2, 0, 24, 2, 0, 25, 2, 0, 26, 2, 0, 27, 2, 0, 28, 2, 0, 29, 2, 0, 65536, 2, 0, 65537, 2, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 65543, 1, 0, 65544, 1, 0, 65545, 1, 0, 65546, 2, 0, 65547, 2, 0, 65548, 2, 0, 65549, 2, 0, 65550, 2, 0, 65551, 2, 0, 65552, 2, 0, 65553, 2, 0, 65554, 2, 0, 65555, 2, 0, 65556, 2, 0, 65557, 2, 0, 65558, 2, 0, 65559, 2, 0, 65560, 2, 0, 65561, 2, 0, 65562, 2, 0, 65563, 2, 0, 65564, 2, 0, 65565, 2, 0, 131072, 2, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131080, 1, 0, 131081, 1, 0, 131094, 11, 0, 131095, 11, 0, 131096, 11, 0, 131099, 2, 0, 131100, 2, 0, 131101, 2, 0, 131102, 2, 0, 196608, 2, 0, 196610, 1, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 196616, 1, 0, 196617, 1, 0, 196630, 11, 0, 196631, 11, 0, 196635, 2, 0, 196636, 2, 0, 196637, 2, 0, 196638, 2, 0, 262144, 2, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 262150, 1, 0, 262151, 1, 0, 262152, 1, 0, 262153, 1, 0, 262166, 11, 0, 262167, 11, 0, 262168, 11, 0, 262171, 2, 0, 262172, 2, 0, 262173, 2, 0, 262174, 2, 0, 327680, 2, 0, 327702, 11, 0, 327703, 11, 0, 327704, 11, 0, 327707, 2, 0, 327708, 2, 0, 327709, 2, 0, 327710, 2, 0, 393216, 2, 0, 393238, 11, 0, 393239, 11, 0, 393240, 11, 0, 393243, 2, 0, 393244, 2, 0, 393246, 2, 0, 458752, 2, 0, 458774, 11, 0, 458775, 11, 0, 458776, 11, 0, 458779, 2, 0, 458780, 2, 0, 458782, 2, 0, 524288, 2, 0, 524310, 11, 0, 524311, 11, 0, 524312, 11, 0, 524315, 2, 0, 524316, 2, 0, 524317, 2, 0, 589824, 2, 0, 589846, 11, 0, 589847, 11, 0, 589851, 2, 0, 589852, 2, 0, 589853, 2, 0, 655360, 2, 0, 655387, 2, 0, 655388, 2, 0, 655389, 2, 0, 720896, 2, 0, 720923, 2, 0, 720924, 2, 0, 720925, 2, 0, 786432, 2, 0, 786459, 2, 0, 786460, 2, 0, 786461, 2, 0, 851968, 2, 0, 851995, 2, 0, 851996, 2, 0, 851997, 2, 0, 917504, 2, 0, 917522, 1, 0, 917523, 1, 0, 917531, 2, 0, 917532, 2, 0, 917533, 2, 0, 983040, 2, 0, 983058, 1, 0, 983059, 1, 0, 983067, 2, 0, 983068, 2, 0, 983069, 2, 0, 1048576, 2, 0, 1048579, 2, 0, 1048580, 2, 0, 1048581, 2, 0, 1048582, 2, 0, 1048583, 2, 0, 1048584, 2, 0, 1048585, 2, 0, 1048586, 2, 0, 1048587, 2, 0, 1048588, 2, 0, 1048589, 2, 0, 1048590, 2, 0, 1048591, 2, 0, 1048592, 2, 0, 1048593, 2, 0, 1048594, 2, 0, 1048595, 2, 0, 1048596, 2, 0, 1048597, 2, 0, 1048598, 2, 0, 1048599, 2, 0, 1048600, 2, 0, 1048601, 2, 0, 1048602, 2, 0, 1048603, 2, 0, 1048604, 2, 0, 1048605, 2, 0 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -128,14 +273,24 @@ position = Vector2( -80, -192 )
 script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Schuppen/Rake"]
+visible = false
 shape = SubResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="TileMap/Schuppen/Rake"]
 texture = ExtResource( 11 )
 
+[node name="MomArea" type="Area2D" parent="TileMap/Schuppen/Rake"]
+script = ExtResource( 57 )
+areaname = "rake"
+text = "Oh no! I stepped on this rake and because of the inevitable laws of physics, it hit my face!"
+emotion = "mad-rake"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Schuppen/Rake/MomArea"]
+shape = SubResource( 40 )
+
 [node name="WaterCan" type="Area2D" parent="TileMap/Schuppen"]
 position = Vector2( -16, -192 )
-script = ExtResource( 6 )
+script = ExtResource( 62 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Schuppen/WaterCan"]
 shape = SubResource( 7 )
@@ -143,15 +298,31 @@ shape = SubResource( 7 )
 [node name="Sprite" type="Sprite" parent="TileMap/Schuppen/WaterCan"]
 texture = ExtResource( 12 )
 
+[node name="MomArea" type="Area2D" parent="TileMap/Schuppen/WaterCan"]
+script = ExtResource( 57 )
+areaname = "watercan"
+text = "I've stepped over the watering can, now my shoes are wet!"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Schuppen/WaterCan/MomArea"]
+shape = SubResource( 38 )
+
 [node name="FlowerPot" type="Area2D" parent="TileMap/Schuppen"]
-position = Vector2( 48, -192 )
-script = ExtResource( 6 )
+position = Vector2( 80, -192 )
+script = ExtResource( 63 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Schuppen/FlowerPot"]
 shape = SubResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="TileMap/Schuppen/FlowerPot"]
 texture = ExtResource( 8 )
+
+[node name="MomArea" type="Area2D" parent="TileMap/Schuppen/FlowerPot"]
+script = ExtResource( 57 )
+areaname = "flowerpot"
+text = "Holy! I almost kicked this vase!"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Schuppen/FlowerPot/MomArea"]
+shape = SubResource( 39 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Schuppen"]
 shape = SubResource( 6 )
@@ -166,11 +337,12 @@ visible = false
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TileMap/Undroppable"]
 polygon = PoolVector2Array( 32, 64, 32, 512, 576, 512, 576, 448, 640, 448, 640, 512, 736, 512, 736, 64, 320, 64, 320, 160, 64, 160, 64, 64, 32, 64, 32, 0, 896, 0, 896, 544, 0, 544, 0, 64 )
 
-[node name="Kitty" type="Area2D" parent="TileMap"]
+[node name="Kitty" type="Area2D" parent="TileMap" groups=["kitty"]]
 position = Vector2( 528, 464 )
 script = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Kitty"]
+visible = false
 shape = SubResource( 8 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="TileMap/Kitty"]
@@ -184,7 +356,32 @@ position = Vector2( 0, -16 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 23 )
 animation = "idle"
+frame = 3
 playing = true
+
+[node name="KittyMomAreas" type="Node2D" parent="TileMap"]
+
+[node name="MomArea" type="Area2D" parent="TileMap/KittyMomAreas" groups=["mom-area"]]
+position = Vector2( 528, 272 )
+script = ExtResource( 57 )
+text = "Poor little pussy! Who put you up there?"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/KittyMomAreas/MomArea"]
+shape = SubResource( 30 )
+
+[node name="newPath" type="Path2D" parent="TileMap/KittyMomAreas/MomArea"]
+curve = SubResource( 31 )
+
+[node name="MomArea2" type="Area2D" parent="TileMap/KittyMomAreas" groups=["mom-area"]]
+position = Vector2( 528, 496 )
+script = ExtResource( 58 )
+text = "Now there, come down."
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/KittyMomAreas/MomArea2"]
+shape = SubResource( 32 )
+
+[node name="newPath" type="Path2D" parent="TileMap/KittyMomAreas/MomArea2"]
+curve = SubResource( 33 )
 
 [node name="Sprinkler" type="Area2D" parent="TileMap"]
 position = Vector2( 400, 176 )
@@ -193,34 +390,104 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Polygon2D" type="Polygon2D" parent="TileMap/Sprinkler"]
-polygon = PoolVector2Array( -16, 0, 0, -16, 16, 0, 0, 16 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Sprinkler"]
+visible = false
 shape = SubResource( 10 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="TileMap/Sprinkler"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Sprinkler/StaticBody2D"]
 shape = SubResource( 11 )
 
+[node name="SprinkledArea" type="Area2D" parent="TileMap/Sprinkler"]
+visible = false
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TileMap/Sprinkler/SprinkledArea"]
+shape = SubResource( 24 )
+
+[node name="SprinkleAnimation" type="AnimatedSprite" parent="TileMap/Sprinkler/SprinkledArea"]
+z_index = 1
+frames = SubResource( 27 )
+animation = "water"
+frame = 38
+playing = true
+
+[node name="MomArea" type="Area2D" parent="TileMap/Sprinkler" groups=["mom-area"]]
+position = Vector2( 128, 0 )
+script = ExtResource( 57 )
+areaname = "sprinkler-1"
+text = "Who turned the sprinkler on? I have to go around to not get wet…"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Sprinkler/MomArea"]
+shape = SubResource( 28 )
+
+[node name="newPath" type="Path2D" parent="TileMap/Sprinkler/MomArea"]
+curve = SubResource( 29 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="TileMap/Sprinkler"]
+position = Vector2( 0, -4 )
+frames = SubResource( 46 )
+animation = "stopped"
+playing = true
+offset = Vector2( 0, -4 )
+
 [node name="Sprinkler2" type="Area2D" parent="TileMap"]
-position = Vector2( 400, 368 )
-script = ExtResource( 9 )
+position = Vector2( 272, 432 )
+script = ExtResource( 59 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Polygon2D" type="Polygon2D" parent="TileMap/Sprinkler2"]
-polygon = PoolVector2Array( -16, 0, 0, -16, 16, 0, 0, 16 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Sprinkler2"]
+visible = false
 shape = SubResource( 10 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="TileMap/Sprinkler2"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Sprinkler2/StaticBody2D"]
 shape = SubResource( 11 )
+
+[node name="SprinkledArea" type="Area2D" parent="TileMap/Sprinkler2"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TileMap/Sprinkler2/SprinkledArea"]
+shape = SubResource( 24 )
+
+[node name="SprinkleAnimation" type="AnimatedSprite" parent="TileMap/Sprinkler2/SprinkledArea"]
+z_index = 1
+frames = SubResource( 27 )
+animation = "water"
+frame = 38
+playing = true
+
+[node name="MomAreaTop" type="Area2D" parent="TileMap/Sprinkler2"]
+position = Vector2( -32, -128 )
+script = ExtResource( 61 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Sprinkler2/MomAreaTop"]
+shape = SubResource( 36 )
+
+[node name="newPath" type="Path2D" parent="TileMap/Sprinkler2/MomAreaTop"]
+curve = SubResource( 37 )
+
+[node name="MomAreaBottom" type="Area2D" parent="TileMap/Sprinkler2" groups=["mom-area"]]
+position = Vector2( 128, 64 )
+script = ExtResource( 60 )
+text = "The second one is also turned on…"
+
+[node name="newPath" type="Path2D" parent="TileMap/Sprinkler2/MomAreaBottom"]
+curve = SubResource( 34 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Sprinkler2/MomAreaBottom"]
+shape = SubResource( 35 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="TileMap/Sprinkler2"]
+position = Vector2( 0, -4 )
+frames = SubResource( 46 )
+animation = "stopped"
+playing = true
+offset = Vector2( 0, -4 )
 
 [node name="Tree" type="StaticBody2D" parent="TileMap"]
 position = Vector2( 608, 480 )
@@ -235,6 +502,12 @@ shape = SubResource( 12 )
 position = Vector2( 0, -93 )
 texture = ExtResource( 13 )
 
+[node name="Mom" parent="TileMap" instance=ExtResource( 14 )]
+visible = false
+position = Vector2( 688, 80 )
+delay = 10
+active = false
+
 [node name="DoorWohnzimmer" type="Area2D" parent="." groups=["door"]]
 position = Vector2( 80, 528 )
 script = ExtResource( 2 )
@@ -246,3 +519,8 @@ shape = SubResource( 5 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="MomPaths" type="Node2D" parent="." groups=["mom-waypoints"]]
+
+[node name="MomPath" type="Path2D" parent="MomPaths"]
+curve = SubResource( 26 )

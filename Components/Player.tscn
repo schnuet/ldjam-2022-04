@@ -68,7 +68,7 @@ shape = SubResource( 3 )
 position = Vector2( 0, -16 )
 frames = SubResource( 2 )
 animation = "walk_side"
-frame = 5
+frame = 1
 playing = true
 
 [node name="MoveTween" type="Tween" parent="."]

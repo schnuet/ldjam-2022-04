@@ -1,7 +1,5 @@
 extends Area2D
 
-onready var target:Vector2 = global_position;
-
 var state = "idle";
 var look_direction = Vector2.DOWN;
 
@@ -9,12 +7,20 @@ var action_object = null; # possible to do action with (in range)
 var current_action_object = null; # in direct interaction
 
 var action_pressed = false;
-
 var carried_pickup = null;
+var deactivated = false;
 
 signal change_room(room_name, player_position);
 
+
+func deactivate():
+	hide();
+	deactivated = true;
+
 func _physics_process(_delta):
+	if deactivated:
+		return;
+		
 	if is_moving():
 		return;
 		
@@ -80,9 +86,6 @@ func _physics_process(_delta):
 
 # MOVING
 
-func is_moving():
-	return $MoveTween.is_active();
-
 func get_areas_in_dir(dir:Vector2):
 	var areas = [];
 	if dir == Vector2.LEFT:
@@ -122,9 +125,9 @@ func is_dir_free(dir:Vector2):
 	return true;
 
 func move(dir:Vector2):
-	target = global_position + dir * Globals.GRID_SIZE;
-	$MoveTween.interpolate_property(self, "global_position", global_position, target, 0.15, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0);
 	state = "moving";
+	var move_target = global_position + dir * Globals.GRID_SIZE;
+	$MoveTween.interpolate_property(self, "global_position", global_position, move_target, 0.15, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0);
 	$MoveTween.start();
 	
 	if dir == Vector2.LEFT:
@@ -150,6 +153,9 @@ func on_move_done():
 func _on_Tween_tween_all_completed():
 	on_move_done();
 
+func is_moving():
+	return $MoveTween.is_active();
+
 
 # PICKUP
 
@@ -159,6 +165,7 @@ func pickup(item:Node2D):
 	$PickupPosition.add_child(item);
 	carried_pickup = item;
 	carried_pickup.position = Vector2.ZERO;
+	carried_pickup.on_pickup();
 
 func drop():
 	if not carried_pickup:
@@ -173,9 +180,11 @@ func drop():
 			area.drop(carried_pickup, self);
 			dropped_on_area = true;
 	
+	# drop on floor:
 	if not dropped_on_area:
 		get_parent().add_child(carried_pickup);
 		carried_pickup.global_position = global_position + look_direction * Globals.GRID_SIZE;
+		carried_pickup.on_drop();
 	
 	carried_pickup = null;
 

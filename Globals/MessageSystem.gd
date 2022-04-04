@@ -6,6 +6,7 @@ var writing = false;
 var waiting = false;
 
 var action_pressed = false;
+var char_talking = "player";
 
 func _ready():
 	hide();
@@ -27,6 +28,8 @@ func show_message(character_name:String, text:String, emotion:String = "happy"):
 	if character_name == "player":
 		character_name = "bob";
 	
+	char_talking = character_name;
+	
 	$Control/AnimatedSprite.animation = character_name + "-" + emotion;
 	return self
 
@@ -43,6 +46,9 @@ func show_message_done():
 	hide();
 
 func _input(_event):
+	if (char_talking != "bob") and (char_talking != "player"):
+		return;
+		
 	if not (writing or waiting):
 		return
 	if Input.is_action_just_pressed("action"):

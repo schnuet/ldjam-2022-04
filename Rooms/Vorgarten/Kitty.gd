@@ -21,11 +21,23 @@ func start_action(player):
 	elif action.id == "scare":
 		yield(MessageSystem.show_message("player", "She ran away in the tree!"), "done");
 		$CollisionShape2D.disabled = true;
+		
+		get_parent().get_node("KittyMomAreas/MomArea").activate();
+		get_parent().get_node("KittyMomAreas/MomArea2").activate();
+		
 		global_position = Vector2(592, 304);
+		
 		remove_child($StaticBody2D);
-		$AnimatedSprite.animation = "angry";
+		change_state("angry");
 		var parent = get_parent();
 		parent.remove_child(self);
 		parent.get_parent().add_child(self);
 	
 	player.state = "idle";
+
+func change_state(state:String):
+	if state == "angry":
+		$AnimatedSprite.animation = "angry";
+	
+	if state == "idle":
+		$AnimatedSprite.animation = "idle";

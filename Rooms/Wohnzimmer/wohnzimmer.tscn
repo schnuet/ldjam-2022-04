@@ -76,7 +76,7 @@ extents = Vector2( 48, 16 )
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 48, 16 )
 
-[node name="Wohnzimmer" type="Node2D"]
+[node name="Wohnzimmer" type="Node2D" groups=["room"]]
 script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -271,3 +271,6 @@ shape = SubResource( 6 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="MomTarget" type="Position2D" parent="." groups=["mom-target"]]
+position = Vector2( 720, 528 )
