@@ -51,5 +51,5 @@ func _on_ProgressBar_done():
 	
 	yield(MessageSystem.show_message("mom", "Bob! I'm back!", "happy"), "done");
 	
-	$Rooms/Vorgarten/TileMap/Mom.();
+	$Rooms/Vorgarten/TileMap/Mom.activate();
 	

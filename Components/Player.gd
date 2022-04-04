@@ -192,19 +192,14 @@ func drop():
 
 
 func can_drop(dir:Vector2):
-	var bodies = [];
 	var areas = [];
 	if dir == Vector2.LEFT:
-		bodies = $MoveColliders/ColliderLeft.get_overlapping_bodies();
 		areas = $MoveColliders/ColliderLeft.get_overlapping_areas();
 	if dir == Vector2.RIGHT:
-		bodies = $MoveColliders/ColliderRight.get_overlapping_bodies();
 		areas = $MoveColliders/ColliderRight.get_overlapping_areas();
 	if dir == Vector2.DOWN:
-		bodies = $MoveColliders/ColliderDown.get_overlapping_bodies();
 		areas = $MoveColliders/ColliderDown.get_overlapping_areas();
 	if dir == Vector2.UP:
-		bodies = $MoveColliders/ColliderUp.get_overlapping_bodies();
 		areas = $MoveColliders/ColliderUp.get_overlapping_areas();
 	
 	for area in areas:
