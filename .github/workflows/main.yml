@@ -47,7 +47,7 @@ jobs:
       env:
         BUTLER_CREDENTIALS: ${{ secrets.ITCH_IO_API_KEY }}
         CHANNEL: web
-        ITCH_GAME: ludum-dare-game-2022-04
+        ITCH_GAME: hold-up-mom
         ITCH_USER: ulm-awesome
         PACKAGE: /github/workspace/dist/HTML5.zip
         VERSION: ${{ steps.tag_version.outputs.TAG_VERSION }}
