@@ -30,6 +30,7 @@ func start_action(player):
 		]), "done");
 		
 		Globals.phoned_person = person_to_phone.id;
+		$TelephoneMomArea.activate();
 		
 		player.state = "talking";
 		yield(MessageSystem.show_message("player", "I called " + person_to_phone.name + "."), "done");

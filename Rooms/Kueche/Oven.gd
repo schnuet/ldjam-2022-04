@@ -64,4 +64,5 @@ func _on_BakeTimer_timeout():
 
 func _on_BurnTimer_timeout():
 	cake_burned = true;
+	state = "burned";
 	$AnimatedSprite.animation = "smoking";

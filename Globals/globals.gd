@@ -11,6 +11,13 @@ var said_living_room_comment = false;
 
 var cake_on_table = false;
 
+var ingredients_on_counter = {
+	"Flour": true,
+	"Eggs": true,
+	"Milk": false,
+	"Bowl": false
+};
+
 func set_player_position(pos:Vector2):
 	var player = get_tree().get_nodes_in_group("player")
 	

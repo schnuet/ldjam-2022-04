@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://Rooms/Kueche/Fridge.gd" type="Script" id=1]
 [ext_resource path="res://Components/Door.gd" type="Script" id=2]
@@ -27,6 +27,8 @@
 [ext_resource path="res://Rooms/Kueche/Kueche_Ofen_backen.png" type="Texture" id=25]
 [ext_resource path="res://Rooms/Kueche/Table.gd" type="Script" id=26]
 [ext_resource path="res://Rooms/Kueche/Schüssel.png" type="Texture" id=27]
+[ext_resource path="res://Rooms/Kueche/KitchenMomArea.gd" type="Script" id=28]
+[ext_resource path="res://Rooms/Kueche/TelephoneMomArea.gd" type="Script" id=29]
 
 [sub_resource type="RectangleShape2D" id=44]
 extents = Vector2( 32, 16 )
@@ -205,6 +207,9 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=52]
+extents = Vector2( 16, 16 )
+
 [sub_resource type="RectangleShape2D" id=25]
 extents = Vector2( 16, 16 )
 
@@ -214,12 +219,14 @@ extents = Vector2( 94, 30 )
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 96, 32 )
 
+[sub_resource type="RectangleShape2D" id=53]
+
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 48, 16 )
 
 [sub_resource type="Curve2D" id=45]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 720, 80, 0, 0, 0, 0, 720, 304, 0, 0, 0, 0, 80, 304, 0, 0, 0, 0, 80, 528 )
+"points": PoolVector2Array( 0, 0, 0, 0, 720, 80, 0, 0, 0, 0, 720, 176, 0, 0, 0, 0, 496, 176, 0, 0, 0, 0, 496, 336, 0, 0, 0, 0, 80, 336, 0, 0, 0, 0, 80, 528 )
 }
 
 [node name="Kueche" type="Node2D" groups=["room"]]
@@ -414,7 +421,7 @@ shape = SubResource( 7 )
 position = Vector2( 0, -3 )
 texture = ExtResource( 18 )
 
-[node name="Oven" type="Area2D" parent="TileMap" groups=["dropzone"]]
+[node name="Oven" type="Area2D" parent="TileMap" groups=["dropzone", "oven"]]
 position = Vector2( 192, 96 )
 script = ExtResource( 15 )
 __meta__ = {
@@ -476,7 +483,7 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Sink/StaticBody2D"]
 shape = SubResource( 23 )
 
-[node name="TelephoneTable" type="Area2D" parent="TileMap" groups=["undroppable"]]
+[node name="TelephoneTable" type="Area2D" parent="TileMap" groups=["telephone", "undroppable"]]
 position = Vector2( 576, 96 )
 script = ExtResource( 14 )
 __meta__ = {
@@ -496,6 +503,13 @@ position = Vector2( 0, -32 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 43 )
 animation = "idle"
+
+[node name="TelephoneMomArea" type="Area2D" parent="TileMap/TelephoneTable"]
+position = Vector2( 80, 80 )
+script = ExtResource( 29 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/TelephoneTable/TelephoneMomArea"]
+shape = SubResource( 52 )
 
 [node name="Chair" type="StaticBody2D" parent="TileMap" groups=["undroppable"]]
 position = Vector2( 304, 432 )
@@ -668,6 +682,13 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Table/Table"]
 shape = SubResource( 24 )
+
+[node name="KitchenMomArea" type="Area2D" parent="TileMap"]
+position = Vector2( 496, 176 )
+script = ExtResource( 28 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/KitchenMomArea"]
+shape = SubResource( 53 )
 
 [node name="DoorWohnzimmer" type="Area2D" parent="." groups=["door"]]
 position = Vector2( 720, 48 )

@@ -1,6 +1,7 @@
 extends Area2D
 
 signal arrived;
+signal move_done;
 
 export var delay = 0;
 export var active = true;
@@ -190,8 +191,11 @@ func move(dir:Vector2):
 		if $AnimatedSprite.animation != "walk_side":
 			$AnimatedSprite.animation = "walk_side";
 	
+	return self
+	
 func on_move_done():
 	state = "idle";
+	emit_signal("move_done");
 
 func _on_MoveTween_tween_all_completed():
 	on_move_done();
