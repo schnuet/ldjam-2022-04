@@ -1,6 +1,6 @@
 extends Node2D
 
-signal change_room(room_name, coordinates);
+var action_pressed = false;
 
 func deactivate():
 	set_process(false);

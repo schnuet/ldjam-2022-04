@@ -18,9 +18,11 @@ func start_action(player):
 
 func drop(item, player):
 	if has_node("Bowl"):
+		player.state = "talking";
 		var bowl = get_node("Bowl");
 		bowl.drop(item);
 		yield(MessageSystem.show_message("player", "I added the " + item.name + " to the bowl."), "done");
+		player.state = "idle";
 		return;
 	if item.name == "Eggs" or item.name == "Flour" or item.name == "Bowl" or item.name == "Milk":
 		add_child(item);

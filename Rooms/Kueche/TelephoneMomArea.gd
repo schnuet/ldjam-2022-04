@@ -6,12 +6,15 @@ func action():
 	var mom = get_tree().get_nodes_in_group("mom")[0];
 	
 	telephone.get_node("AnimatedSprite").animation = "ringing";
+	telephone.get_node("AnimatedSprite").play();
 	
 	yield(MessageSystem.show_message("mom", "Oh, the telephone is ringing?", "happy"), "done");
 	
 	yield(mom.move(Vector2.LEFT), "move_done");
 	yield(mom.move(Vector2.LEFT), "move_done");
 	yield(mom.move(Vector2.UP), "move_done");
+	
+	telephone.get_node("AnimatedSprite").animation = "idle";
 	
 	if Globals.phoned_person == "police":
 		yield(MessageSystem.show_message("mom", "Hello? Who is on the-?", "happy"), "done");
@@ -28,8 +31,6 @@ func action():
 	if Globals.phoned_person == "football":
 		yield(MessageSystem.show_message("mom", "Hello? Who is on the- ", "happy"), "done");
 		yield(MessageSystem.show_message("mom", "oh... yeah... no, I am not interested in football. Bye.", "mad"), "done");
-		 
-
 	
 	
 	return .action();

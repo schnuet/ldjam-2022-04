@@ -23,6 +23,8 @@ func _ready():
 func _process(_delta):
 	if delay > 0:
 		return;
+	
+	$FrontArea.position = looking_dir * Globals.GRID_SIZE;
 		
 	if !active:
 		return;

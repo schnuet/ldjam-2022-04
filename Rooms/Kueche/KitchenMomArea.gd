@@ -5,9 +5,9 @@ func action():
 	var mom = get_tree().get_nodes_in_group("mom")[0];
 	var oven = get_tree().get_nodes_in_group("oven")[0];
 	
-	mom.look_direction = Vector2.LEFT;
+	mom.looking_dir = Vector2.LEFT;
 	mom.get_node("AnimatedSprite").animation = "walk_side";
-	mom.get_node("AnimatedSprite").scale.x = -abs($AnimatedSprite.scale.x);
+	mom.get_node("AnimatedSprite").scale.x = -abs(mom.get_node("AnimatedSprite").scale.x);
 	
 	if (
 		Globals.ingredients_on_counter["Milk"] or 

@@ -133,6 +133,7 @@ position = Vector2( 0, -20 )
 scale = Vector2( 0.267045, 0.267045 )
 frames = SubResource( 2 )
 animation = "walk_down"
+frame = 31
 playing = true
 
 [node name="MoveTween" type="Tween" parent="."]

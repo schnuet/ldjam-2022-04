@@ -11,6 +11,7 @@ func start_action(player):
 		player.pickup($Milk);
 		has_milk = false;
 	else:
+		player.state = "talking";
 		yield(MessageSystem.show_message("player", "Fridge is empty."), "done");
 		yield(MessageSystem.show_message("player", "Mom didn't buy food."), "done");
 	

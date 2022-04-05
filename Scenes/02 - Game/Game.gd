@@ -62,3 +62,5 @@ func _on_ProgressBar_done():
 	
 	$Rooms/Vorgarten/TileMap/Mom.activate();
 	
+	$Rooms/Zimmer/Boy.visible = true;
+	
