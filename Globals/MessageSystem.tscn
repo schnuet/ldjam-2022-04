@@ -392,6 +392,16 @@ animations = [ {
 "name": "mom-mad-rake",
 "speed": 25.0
 }, {
+"frames": [ ExtResource( 83 ), ExtResource( 70 ), ExtResource( 85 ), ExtResource( 65 ), ExtResource( 63 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 91 ), ExtResource( 51 ), ExtResource( 86 ), ExtResource( 48 ), ExtResource( 36 ), ExtResource( 44 ), ExtResource( 67 ), ExtResource( 42 ), ExtResource( 46 ), ExtResource( 76 ), ExtResource( 43 ), ExtResource( 32 ), ExtResource( 87 ), ExtResource( 89 ), ExtResource( 37 ), ExtResource( 33 ), ExtResource( 50 ), ExtResource( 92 ), ExtResource( 68 ), ExtResource( 54 ), ExtResource( 93 ), ExtResource( 94 ), ExtResource( 79 ), ExtResource( 31 ), ExtResource( 38 ), ExtResource( 71 ), ExtResource( 56 ), ExtResource( 55 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 59 ), ExtResource( 41 ) ],
+"loop": true,
+"name": "bob-neutral",
+"speed": 25.0
+}, {
+"frames": [ ExtResource( 335 ), ExtResource( 339 ), ExtResource( 333 ), ExtResource( 321 ), ExtResource( 327 ), ExtResource( 337 ), ExtResource( 317 ), ExtResource( 316 ), ExtResource( 322 ), ExtResource( 340 ), ExtResource( 345 ), ExtResource( 313 ), ExtResource( 341 ), ExtResource( 326 ), ExtResource( 334 ), ExtResource( 350 ), ExtResource( 343 ), ExtResource( 346 ), ExtResource( 318 ), ExtResource( 342 ), ExtResource( 331 ), ExtResource( 330 ), ExtResource( 323 ), ExtResource( 344 ), ExtResource( 324 ), ExtResource( 325 ), ExtResource( 349 ), ExtResource( 332 ), ExtResource( 348 ), ExtResource( 315 ), ExtResource( 319 ), ExtResource( 351 ), ExtResource( 311 ), ExtResource( 336 ), ExtResource( 352 ), ExtResource( 320 ), ExtResource( 312 ), ExtResource( 328 ), ExtResource( 314 ) ],
+"loop": true,
+"name": "mom-neutral",
+"speed": 25.0
+}, {
 "frames": [ ExtResource( 12 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 13 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 17 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 29 ), ExtResource( 14 ), ExtResource( 24 ), ExtResource( 27 ), ExtResource( 25 ), ExtResource( 18 ), ExtResource( 15 ), ExtResource( 26 ), ExtResource( 28 ), ExtResource( 30 ), ExtResource( 16 ), ExtResource( 19 ), ExtResource( 80 ), ExtResource( 84 ), ExtResource( 52 ), ExtResource( 34 ), ExtResource( 53 ), ExtResource( 35 ), ExtResource( 90 ), ExtResource( 69 ), ExtResource( 88 ), ExtResource( 81 ), ExtResource( 82 ) ],
 "loop": true,
 "name": "bob-happy",
@@ -405,16 +415,6 @@ animations = [ {
 "frames": [ ExtResource( 111 ), ExtResource( 112 ), ExtResource( 146 ), ExtResource( 128 ), ExtResource( 156 ), ExtResource( 151 ), ExtResource( 162 ), ExtResource( 133 ), ExtResource( 140 ), ExtResource( 141 ), ExtResource( 158 ), ExtResource( 106 ), ExtResource( 124 ), ExtResource( 115 ), ExtResource( 161 ), ExtResource( 152 ), ExtResource( 105 ), ExtResource( 126 ), ExtResource( 120 ), ExtResource( 134 ), ExtResource( 164 ), ExtResource( 116 ), ExtResource( 153 ), ExtResource( 123 ), ExtResource( 155 ), ExtResource( 103 ), ExtResource( 101 ), ExtResource( 118 ), ExtResource( 109 ), ExtResource( 125 ), ExtResource( 117 ), ExtResource( 148 ), ExtResource( 129 ), ExtResource( 144 ), ExtResource( 163 ), ExtResource( 121 ), ExtResource( 102 ), ExtResource( 135 ), ExtResource( 107 ), ExtResource( 136 ), ExtResource( 113 ), ExtResource( 108 ), ExtResource( 127 ), ExtResource( 130 ), ExtResource( 131 ), ExtResource( 137 ), ExtResource( 138 ), ExtResource( 142 ), ExtResource( 139 ), ExtResource( 143 ), ExtResource( 145 ), ExtResource( 168 ), ExtResource( 167 ), ExtResource( 165 ), ExtResource( 169 ), ExtResource( 170 ), ExtResource( 166 ), ExtResource( 226 ), ExtResource( 208 ), ExtResource( 217 ), ExtResource( 196 ), ExtResource( 209 ), ExtResource( 232 ), ExtResource( 177 ), ExtResource( 216 ), ExtResource( 199 ), ExtResource( 233 ), ExtResource( 212 ), ExtResource( 210 ), ExtResource( 211 ), ExtResource( 221 ), ExtResource( 213 ), ExtResource( 206 ), ExtResource( 178 ), ExtResource( 214 ), ExtResource( 200 ), ExtResource( 215 ), ExtResource( 218 ), ExtResource( 171 ), ExtResource( 219 ), ExtResource( 187 ), ExtResource( 203 ), ExtResource( 220 ), ExtResource( 191 ), ExtResource( 198 ), ExtResource( 234 ), ExtResource( 183 ), ExtResource( 222 ), ExtResource( 192 ), ExtResource( 223 ), ExtResource( 228 ), ExtResource( 224 ), ExtResource( 225 ), ExtResource( 194 ), ExtResource( 227 ), ExtResource( 205 ), ExtResource( 184 ), ExtResource( 229 ), ExtResource( 230 ), ExtResource( 204 ) ],
 "loop": true,
 "name": "mom-mad",
-"speed": 25.0
-}, {
-"frames": [ ExtResource( 335 ), ExtResource( 339 ), ExtResource( 333 ), ExtResource( 321 ), ExtResource( 327 ), ExtResource( 337 ), ExtResource( 317 ), ExtResource( 316 ), ExtResource( 322 ), ExtResource( 340 ), ExtResource( 345 ), ExtResource( 313 ), ExtResource( 341 ), ExtResource( 326 ), ExtResource( 334 ), ExtResource( 350 ), ExtResource( 343 ), ExtResource( 346 ), ExtResource( 318 ), ExtResource( 342 ), ExtResource( 331 ), ExtResource( 330 ), ExtResource( 323 ), ExtResource( 344 ), ExtResource( 324 ), ExtResource( 325 ), ExtResource( 349 ), ExtResource( 332 ), ExtResource( 348 ), ExtResource( 315 ), ExtResource( 319 ), ExtResource( 351 ), ExtResource( 311 ), ExtResource( 336 ), ExtResource( 352 ), ExtResource( 320 ), ExtResource( 312 ), ExtResource( 328 ), ExtResource( 314 ) ],
-"loop": true,
-"name": "mom-neutral",
-"speed": 25.0
-}, {
-"frames": [ ExtResource( 83 ), ExtResource( 70 ), ExtResource( 85 ), ExtResource( 65 ), ExtResource( 63 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 91 ), ExtResource( 51 ), ExtResource( 86 ), ExtResource( 48 ), ExtResource( 36 ), ExtResource( 44 ), ExtResource( 67 ), ExtResource( 42 ), ExtResource( 46 ), ExtResource( 76 ), ExtResource( 43 ), ExtResource( 32 ), ExtResource( 87 ), ExtResource( 89 ), ExtResource( 37 ), ExtResource( 33 ), ExtResource( 50 ), ExtResource( 92 ), ExtResource( 68 ), ExtResource( 54 ), ExtResource( 93 ), ExtResource( 94 ), ExtResource( 79 ), ExtResource( 31 ), ExtResource( 38 ), ExtResource( 71 ), ExtResource( 56 ), ExtResource( 55 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 59 ), ExtResource( 41 ) ],
-"loop": true,
-"name": "bob-neutral",
 "speed": 25.0
 } ]
 
