@@ -7,7 +7,7 @@ func action():
 	
 	mom.look_direction = Vector2.LEFT;
 	mom.get_node("AnimatedSprite").animation = "walk_side";
-	mom.get_node("AnimatedSprite").scale.x = -1;
+	mom.get_node("AnimatedSprite").scale.x = -abs($AnimatedSprite.scale.x);
 	
 	if (
 		Globals.ingredients_on_counter["Milk"] or 
