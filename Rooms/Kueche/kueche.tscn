@@ -705,6 +705,7 @@ shape = SubResource( 53 )
 [node name="CakeMomArea" type="Area2D" parent="TileMap"]
 position = Vector2( 496, 304 )
 script = ExtResource( 32 )
+enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/CakeMomArea"]
 shape = SubResource( 55 )
