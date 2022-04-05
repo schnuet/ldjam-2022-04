@@ -11,7 +11,12 @@ func _ready():
 	$Rooms.remove_child(player);
 	change_room("Zimmer", Vector2(432, 304)); # change to Kueche
 	
-	yield(MessageSystem.show_message("player", "Oh no! Mom comes home and my room is dirty! I've got to delay her arrival!", "neutral"), "done");
+	player.state = "talking";
+	
+	yield(MessageSystem.show_message("player", "Oh no! Mom comes home and my room is dirty!", "neutral"), "done");
+	yield(MessageSystem.show_message("player", "I've got to delay her arrival!", "neutral"), "done");
+	
+	player.state = "idle";
 
 func change_room(room_name:String, player_position:Vector2):
 	if current_room:

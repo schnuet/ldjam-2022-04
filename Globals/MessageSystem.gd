@@ -59,7 +59,6 @@ func show_message_done():
 	$Control/Label.hide();
 	$Control/Label.percent_visible = 0;
 	waiting = false;
-	emit_signal("done");
 	hide();
 
 func _input(_event):
@@ -80,3 +79,8 @@ func _input(_event):
 			$Control/Timer.stop();
 			show_message_done();
 			
+
+
+func _on_MessageSystem_visibility_changed():
+	if not visible:
+		emit_signal("done");
