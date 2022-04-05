@@ -37,6 +37,8 @@ func start_action(player):
 			$AnimatedSprite.animation = "out";
 			yield(MessageSystem.show_message("player", "Let's put it on the table."), "done");
 			
+			$BurnTimer.stop(); # prevent burning.
+			
 	elif state == "burned":
 		yield(MessageSystem.show_message("player", "Oh no! The cake is burned!", "neutral"), "done");
 		
@@ -63,6 +65,7 @@ func _on_BakeTimer_timeout():
 
 
 func _on_BurnTimer_timeout():
-	cake_burned = true;
-	state = "burned";
-	$AnimatedSprite.animation = "smoking";
+	if state == "baking":
+		cake_burned = true;
+		state = "burned";
+		$AnimatedSprite.animation = "smoking";
