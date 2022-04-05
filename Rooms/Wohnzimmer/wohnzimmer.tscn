@@ -122,7 +122,7 @@ extents = Vector2( 48, 16 )
 
 [sub_resource type="Curve2D" id=23]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 80, 112, 0, 0, 0, 0, 80, 208, 0, 0, 0, 0, 208, 208, 0, 0, 0, 0, 208, 304, 0, 0, 0, 0, 496, 304, 0, 0, 0, 0, 496, 400, 0, 0, 0, 0, 592, 400, 0, 0, 0, 0, 592, 464, 0, 0, 0, 0, 720, 464, 0, 0, 0, 0, 720, 528 )
+"points": PoolVector2Array( 0, 0, 0, 0, 80, 112, 0, 0, 0, 0, 80, 208, 0, 0, 0, 0, 208, 208, 0, 0, 0, 0, 208, 336, 0, 0, 0, 0, 496, 336, 0, 0, 0, 0, 496, 400, 0, 0, 0, 0, 592, 400, 0, 0, 0, 0, 592, 464, 0, 0, 0, 0, 720, 464, 0, 0, 0, 0, 720, 528 )
 }
 
 [node name="Wohnzimmer" type="Node2D" groups=["room"]]
@@ -319,7 +319,7 @@ standing_before = true
 shape = SubResource( 33 )
 
 [node name="Sessel1" parent="TileMap" instance=ExtResource( 2 )]
-position = Vector2( 272, 384 )
+position = Vector2( 272, 416 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Sessel1"]
 shape = SubResource( 8 )
