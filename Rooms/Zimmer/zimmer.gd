@@ -14,9 +14,13 @@ func _on_Credits_pressed():
 	get_tree().change_scene("res://Scenes/99 - Credits/Credits.tscn");
 
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_released("action"):
 		action_pressed = false;
+		
+	var mom = get_tree().get_nodes_in_group("mom")[0];
+	if mom.active:
+		return;
 	
 	var player_nodes = get_tree().get_nodes_in_group("player");
 	if player_nodes.size() == 0:

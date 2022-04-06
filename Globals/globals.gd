@@ -12,6 +12,7 @@ var said_living_room_comment = false;
 var said_holding_on_message = false;
 
 var cake_on_table = false;
+var cake_burned = false;
 
 var ingredients_on_counter = {
 	"Flour": true,
@@ -30,6 +31,8 @@ func reset():
 	said_living_room_comment = false;
 	
 	cake_on_table = false;
+	cake_burned = false;
+	
 	ingredients_on_counter = {
 		"Flour": true,
 		"Eggs": true,

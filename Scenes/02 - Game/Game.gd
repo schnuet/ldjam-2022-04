@@ -32,8 +32,8 @@ func change_room(room_name:String, player_position:Vector2):
 	print("change room", room.name);
 
 func activate_room(room:Node2D):
-	room.activate();
 	room.get_node("TileMap").add_child(player);
+	room.activate();
 
 func deactivate_room(room:Node2D):
 	room.deactivate();

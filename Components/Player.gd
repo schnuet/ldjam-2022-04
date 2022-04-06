@@ -170,6 +170,8 @@ func pickup(item:Node2D):
 	carried_pickup = item;
 	carried_pickup.position = Vector2.ZERO;
 	carried_pickup.on_pickup();
+	if carried_pickup.has_node("Sound"):
+		carried_pickup.get_node("Sound").play();
 
 func drop():
 	if not carried_pickup:

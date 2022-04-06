@@ -15,7 +15,8 @@ func end_action(_player):
 	pass
 
 func on_drop():
-	pass
+	if has_node("Sound"):
+		get_node("Sound").play();
 
 func on_pickup():
 	pass
