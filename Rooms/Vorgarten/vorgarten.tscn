@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=2]
+[gd_scene load_steps=117 format=2]
 
 [ext_resource path="res://Assets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Components/Door.gd" type="Script" id=2]
@@ -65,15 +65,15 @@
 [ext_resource path="res://Rooms/Vorgarten/FlowerPot.gd" type="Script" id=63]
 [ext_resource path="res://Rooms/Vorgarten/Sprites/Rasensprenger.png" type="Texture" id=64]
 [ext_resource path="res://Rooms/Vorgarten/MomAreaRoomChange.gd" type="Script" id=65]
+[ext_resource path="res://Rooms/Vorgarten/Sprites/Schuppen.png" type="Texture" id=66]
 [ext_resource path="res://Rooms/Vorgarten/RakeMomArea.gd" type="Script" id=67]
 [ext_resource path="res://Rooms/Vorgarten/WaterCanMomArea.gd" type="Script" id=68]
 [ext_resource path="res://Rooms/Vorgarten/FlowerPotMomArea.gd" type="Script" id=69]
-[ext_resource path="res://Rooms/Vorgarten/Sprites/Schuppen.png" type="Texture" id=66]
-[ext_resource path="res://Rooms/Vorgarten/Sounds/rechenBenutzen.wav" type="AudioStream" id=67]
-[ext_resource path="res://Rooms/Vorgarten/Sounds/gießkanne.wav" type="AudioStream" id=68]
-[ext_resource path="res://Rooms/Vorgarten/Sounds/blumenbehaeltnis.wav" type="AudioStream" id=69]
 [ext_resource path="res://Rooms/Vorgarten/Sounds/katzeFauchen.wav" type="AudioStream" id=70]
 [ext_resource path="res://Rooms/Vorgarten/Sounds/rasensprenger.wav" type="AudioStream" id=71]
+[ext_resource path="res://Rooms/Vorgarten/Sounds/rechenBenutzen.wav" type="AudioStream" id=72]
+[ext_resource path="res://Rooms/Vorgarten/Sounds/gießkanne.wav" type="AudioStream" id=73]
+[ext_resource path="res://Rooms/Vorgarten/Sounds/blumenbehaeltnis.wav" type="AudioStream" id=74]
 
 [sub_resource type="RectangleShape2D" id=7]
 
@@ -301,12 +301,15 @@ texture = ExtResource( 11 )
 
 [node name="MomArea" type="Area2D" parent="TileMap/Schuppen/Rake"]
 script = ExtResource( 67 )
+text = "Oh no! I stepped on this rake and because of the inevitable laws of physics, it hit my face!"
+emotion = "mad-rake"
+enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Schuppen/Rake/MomArea"]
 shape = SubResource( 40 )
 
 [node name="Sound" type="AudioStreamPlayer" parent="TileMap/Schuppen/Rake"]
-stream = ExtResource( 67 )
+stream = ExtResource( 72 )
 
 [node name="WaterCan" type="Area2D" parent="TileMap/Schuppen"]
 position = Vector2( -16, -192 )
@@ -320,13 +323,15 @@ texture = ExtResource( 12 )
 
 [node name="MomArea" type="Area2D" parent="TileMap/Schuppen/WaterCan"]
 script = ExtResource( 68 )
+text = "I've stepped over the watering can, now my shoes are wet!"
 emotion = "mad"
+enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Schuppen/WaterCan/MomArea"]
 shape = SubResource( 38 )
 
 [node name="Sound" type="AudioStreamPlayer" parent="TileMap/Schuppen/WaterCan"]
-stream = ExtResource( 68 )
+stream = ExtResource( 73 )
 
 [node name="FlowerPot" type="Area2D" parent="TileMap/Schuppen"]
 position = Vector2( 80, -192 )
@@ -340,13 +345,14 @@ texture = ExtResource( 8 )
 
 [node name="MomArea" type="Area2D" parent="TileMap/Schuppen/FlowerPot"]
 script = ExtResource( 69 )
-emotion = "mad"
+text = "Holy! I almost kicked this flower pot!"
+enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Schuppen/FlowerPot/MomArea"]
 shape = SubResource( 39 )
 
 [node name="Sound" type="AudioStreamPlayer" parent="TileMap/Schuppen/FlowerPot"]
-stream = ExtResource( 69 )
+stream = ExtResource( 74 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Schuppen"]
 shape = SubResource( 6 )
@@ -376,7 +382,7 @@ position = Vector2( 0, -16 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 23 )
 animation = "idle"
-frame = 1
+frame = 3
 playing = true
 
 [node name="Sound" type="AudioStreamPlayer" parent="TileMap/Kitty"]
@@ -433,7 +439,7 @@ shape = SubResource( 24 )
 z_index = 1
 frames = SubResource( 27 )
 animation = "water"
-frame = 9
+frame = 40
 playing = true
 
 [node name="MomArea" type="Area2D" parent="TileMap/Sprinkler" groups=["mom-area"]]
@@ -484,7 +490,7 @@ shape = SubResource( 24 )
 z_index = 1
 frames = SubResource( 27 )
 animation = "water"
-frame = 9
+frame = 40
 playing = true
 
 [node name="MomAreaTop" type="Area2D" parent="TileMap/Sprinkler2"]

@@ -1,5 +1,12 @@
 extends Activatable
 
+func start_action(player):
+	player.state = "talking";
+	
+	yield(MessageSystem.show_message("bob", "This table needs some food on it.", "neutral"), "done");
+	
+	player.state = "idle";
+
 func can_drop(item):
 	if item.name != "Cake":
 		return "Only cake belongs on this table.";

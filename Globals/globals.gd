@@ -46,6 +46,13 @@ func reset():
 		"Milk": false,
 		"Bowl": false
 	};
+	
+	aggro_a = 0; # tools
+	aggro_b_xbox = 0; # xbox
+	aggro_c = 0; # telephone
+	aggro_d = 0; # cake
+
+	time_delayed = 0;
 
 func set_player_position(pos:Vector2):
 	var player = get_tree().get_nodes_in_group("player")

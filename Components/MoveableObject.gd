@@ -39,7 +39,7 @@ func start_action(p):
 	if not Globals.said_holding_on_message:
 		Globals.said_holding_on_message = true;
 		p.state = "talking";
-		yield(MessageSystem.show_message("player", "To move the furniture, I'll have to keep holding it.", "neutral"), "done");
+		yield(MessageSystem.show_message("player", "To move the furniture, I'll have to keep holding it.", "happy"), "done");
 		p.state = "idle";
 	
 	if not action_down:

@@ -11,6 +11,8 @@ var current_texture = texture_80;
 
 export var value = 100 setget set_value;
 
+var rising = false;
+
 func _ready():
 	$Tween.interpolate_property(self, "value", 100, 0, 150, Tween.TRANS_LINEAR);
 	$Tween.start();
@@ -43,13 +45,15 @@ func update_rect():
 		
 
 func _on_Tween_tween_all_completed():
-	emit_signal("done");
-	$Tween.reset_all();
+	if not rising:
+		emit_signal("done");
+		$Tween.reset_all();
 	
 func switch_mode():
 	$DelaySprite.visible = true;
-	$Tween.interpolate_property(self, "value", 0, 100, 120, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT);
+	$Tween.interpolate_property(self, "value", 0, 100, 160, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT);
 	$Tween.start();
+	rising = true;
 
 func start_increase():
 	$Tween.resume_all();

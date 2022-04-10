@@ -19,4 +19,9 @@ func action():
 	game.change_room("Zimmer", Vector2.ZERO);
 	game.get_node("Rooms/Zimmer/TileMap").add_child(mom);
 	mom.position = Vector2(80, 80);
+	
+	var progress_bar = game.get_node("ProgressBar");
+	progress_bar.pause();
+	Globals.time_delayed = progress_bar.value / 100.0 * 135;
+	
 	return .action();

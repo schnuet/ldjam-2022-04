@@ -80,11 +80,6 @@ region = Rect2( 32, 0, 32, 64 )
 
 [sub_resource type="SpriteFrames" id=13]
 animations = [ {
-"frames": [ ExtResource( 8 ) ],
-"loop": true,
-"name": "out",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
 "loop": true,
 "name": "smoking",
@@ -93,6 +88,11 @@ animations = [ {
 "frames": [ SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
 "name": "baking",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "out",
 "speed": 5.0
 } ]
 
@@ -103,6 +103,10 @@ extents = Vector2( 32, 32 )
 
 [sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 32, 32 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 10 )
@@ -116,21 +120,17 @@ region = Rect2( 64, 0, 32, 32 )
 atlas = ExtResource( 10 )
 region = Rect2( 96, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 10 )
-region = Rect2( 0, 0, 32, 32 )
-
 [sub_resource type="SpriteFrames" id=21]
 animations = [ {
-"frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
-"loop": true,
-"name": "running",
-"speed": 15.0
-}, {
 "frames": [ SubResource( 20 ) ],
 "loop": true,
 "name": "stopped",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
+"loop": true,
+"name": "running",
+"speed": 15.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=22]
@@ -141,10 +141,6 @@ extents = Vector2( 32, 32 )
 
 [sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 32, 32 )
-
-[sub_resource type="AtlasTexture" id=25]
-atlas = ExtResource( 13 )
-region = Rect2( 0, 0, 32, 64 )
 
 [sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 13 )
@@ -202,16 +198,20 @@ region = Rect2( 416, 0, 32, 64 )
 atlas = ExtResource( 13 )
 region = Rect2( 448, 0, 32, 64 )
 
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 13 )
+region = Rect2( 0, 0, 32, 64 )
+
 [sub_resource type="SpriteFrames" id=40]
 animations = [ {
-"frames": [ SubResource( 25 ) ],
-"loop": true,
-"name": "idle",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ) ],
 "loop": true,
 "name": "ringing",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 25 ) ],
+"loop": true,
+"name": "idle",
 "speed": 5.0
 } ]
 
