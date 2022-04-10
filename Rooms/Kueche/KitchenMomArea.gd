@@ -16,9 +16,11 @@ func action():
 		Globals.ingredients_on_counter["Bowl"]
 	):
 		yield(MessageSystem.show_message("mom", "Why did my son leave groceries on the counter?", "neutral"), "done");
+		Globals.aggro_d = 1;
 	
 	if oven.cake_burned:
 		yield(MessageSystem.show_message("mom", "What's that horrible smell?", "mad"), "done");
 		yield(MessageSystem.show_message("mom", "THIS LITTLE BRAT! Oh, I can´t wait to get to his room!", "mad"), "done");
+		Globals.aggro_d = 3;
 
 	return .action();

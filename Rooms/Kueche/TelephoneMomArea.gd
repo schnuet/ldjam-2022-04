@@ -20,13 +20,15 @@ func action():
 		yield(MessageSystem.show_message("mom", "Hello? Who is on the-?", "happy"), "done");
 		yield(MessageSystem.show_message("mom", "OH, the police?!? Sorry, must be a misconception. *click*", "neutral"), "done");
 		yield(MessageSystem.show_message("mom", "Why did he call the police? I better hurry to his room!", "neutral"), "done");
-		 
+		Globals.aggro_c = 1; 
+		
 	if Globals.phoned_person == "friend":
 		yield(MessageSystem.show_message("mom", "Hello? Who is on the-?", "happy"), "done");
 		yield(MessageSystem.show_message("mom", "HEY! How are you gurl? Sure we can meet soon bla bla bla...", "happy"), "done");
 		yield(MessageSystem.show_message("mom", "I also saw this soap bla bla bla...", "happy"), "done");
 		yield(MessageSystem.show_message("mom", "Yeah, you too!", "happy"), "done");
 		yield(MessageSystem.show_message("mom", "Bye!", "happy"), "done");
+		Globals.aggro_b_xbox -= 1;
 		 
 	if Globals.phoned_person == "football":
 		yield(MessageSystem.show_message("mom", "Hello? Who is on the- ", "happy"), "done");

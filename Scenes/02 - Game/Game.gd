@@ -61,6 +61,7 @@ func _on_ProgressBar_done():
 	yield(MessageSystem.show_message("mom", "Bob! I'm back!", "happy"), "done");
 	
 	$Rooms/Vorgarten/TileMap/Mom.activate();
+	$ProgressBar.switch_mode();
 	
 	$Rooms/Zimmer/Boy.visible = true;
 	

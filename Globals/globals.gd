@@ -13,6 +13,13 @@ var said_holding_on_message = false;
 
 var cake_on_table = false;
 
+var aggro_a = 0; # tools
+var aggro_b_xbox = 0; # xbox
+var aggro_c = 0; # telephone
+var aggro_d = 0; # cake
+
+var time_delayed = 0;
+
 var ingredients_on_counter = {
 	"Flour": true,
 	"Eggs": true,

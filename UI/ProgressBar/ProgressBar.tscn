@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://UI/ProgressBar/status_0.png" type="Texture" id=1]
 [ext_resource path="res://UI/ProgressBar/mom_arriving_bar_transparent.png" type="Texture" id=2]
 [ext_resource path="res://UI/ProgressBar/mom_arriving_bar.png" type="Texture" id=3]
 [ext_resource path="res://UI/ProgressBar/ProgressBar.gd" type="Script" id=4]
+[ext_resource path="res://UI/ProgressBar/time_mom_took.png" type="Texture" id=5]
 
 [node name="ProgressBar" type="Node2D"]
 position = Vector2( 896, 0 )
@@ -55,5 +56,10 @@ __meta__ = {
 }
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="DelaySprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 32, 32 )
+texture = ExtResource( 5 )
 
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

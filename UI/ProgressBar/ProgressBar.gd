@@ -42,6 +42,17 @@ func update_rect():
 		$Control/NinePatchRect.set_position(Vector2(0, 455 - height));
 		
 
-
 func _on_Tween_tween_all_completed():
 	emit_signal("done");
+	$Tween.reset_all();
+	
+func switch_mode():
+	$DelaySprite.visible = true;
+	$Tween.interpolate_property(self, "value", 0, 100, 120, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT);
+	$Tween.start();
+
+func start_increase():
+	$Tween.resume_all();
+
+func pause():
+	$Tween.stop_all();

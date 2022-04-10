@@ -15,6 +15,7 @@ func action():
 		yield(MessageSystem.show_message("mom", "Oh, the history channel, I don’t really enjoy their stuff... I just turn it off!", "neutral"), "done");
 	if Globals.tv_channel == "xbox":
 		yield(MessageSystem.show_message("mom", "Oh, my son forgot to turn his Nintendo off, He is just like his father!", "mad"), "done");
+		Globals.aggro_b_xbox = 1;
 	
 	return .action();
 	
