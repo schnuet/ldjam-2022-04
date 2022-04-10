@@ -32,3 +32,6 @@ func start_action(_player):
 
 func end_action(_player):
 	dehighlight_arrow();
+
+func deactivate():
+	get_node("CollisionShape2D").disabled = true;

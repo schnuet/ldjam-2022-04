@@ -38,6 +38,7 @@ func start_action(player):
 func change_state(state:String):
 	if state == "angry":
 		$AnimatedSprite.animation = "angry";
+		$Sound.play(0.0);
 	
 	if state == "idle":
 		$AnimatedSprite.animation = "idle";

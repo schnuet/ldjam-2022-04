@@ -13,11 +13,27 @@ var player_side = Vector2.ZERO;
 
 var yeet_dir = Vector2.ZERO;
 
+var sound_1 = preload("res://Assets/Sounds/moebelVerruecken1.wav");
+var sound_2 = preload("res://Assets/Sounds/moebelVerruecken2.wav");
+var sound_3 = preload("res://Assets/Sounds/moebelVerruecken3.wav");
+var sound_4 = preload("res://Assets/Sounds/moebelVerruecken4.wav");
+var sound_5 = preload("res://Assets/Sounds/moebelVerruecken5.wav");
+var sound_6 = preload("res://Assets/Sounds/moebelVerruecken6.wav");
+var sound_streams = [
+	sound_1,
+	sound_2,
+	sound_3,
+	sound_4,
+	sound_5,
+	sound_6
+];
+
 func _ready():
 	add_collision_areas();
 	add_move_tween();
 	add_yeet_tween();
 	add_collision_object();
+	add_sounds();
 	
 func start_action(p):
 	if not Globals.said_holding_on_message:
@@ -72,6 +88,7 @@ func move(dir:Vector2):
 	
 	player.state = "moving_thing";
 	player.move(dir);
+	play_random_sound();
 	do_move_self(dir);
 
 func do_move_self(dir:Vector2):
@@ -192,3 +209,19 @@ func is_dir_free(dir:Vector2):
 	if colliders[dir].get_overlapping_bodies().size() > 0:
 		return false;
 	return true;
+
+
+# SOUND
+
+func add_sounds():
+	var sound_player = AudioStreamPlayer.new();
+	sound_player.name = "SoundPlayer";
+	add_child(sound_player);
+
+func play_random_sound():
+	var sound_player:AudioStreamPlayer = get_node("SoundPlayer");
+	sound_player.stop();
+	
+	var i = randi() % sound_streams.size();
+	sound_player.stream = sound_streams[i];
+	sound_player.play(0.0);

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mehl.wav-c46cb243a2efc88dc58720d00ed01669.sample"
+
+[deps]
+
+source_file="res://Rooms/Kueche/Sounds/mehl.wav"
+dest_files=[ "res://.import/mehl.wav-c46cb243a2efc88dc58720d00ed01669.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

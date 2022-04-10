@@ -1,242 +1,248 @@
-[gd_scene load_steps=82 format=2]
+[gd_scene load_steps=88 format=2]
 
 [ext_resource path="res://Rooms/Kueche/Fridge.gd" type="Script" id=1]
 [ext_resource path="res://Components/Door.gd" type="Script" id=2]
 [ext_resource path="res://Components/Pickable.gd" type="Script" id=3]
 [ext_resource path="res://Rooms/Kueche/kueche.gd" type="Script" id=4]
-[ext_resource path="res://Rooms/Kueche/Dining.png" type="Texture" id=5]
+[ext_resource path="res://Rooms/Kueche/Sprites/Dining.png" type="Texture" id=5]
 [ext_resource path="res://Assets/tileset.tres" type="TileSet" id=6]
-[ext_resource path="res://Rooms/Kueche/Kueche_Kuehlschrank.png" type="Texture" id=7]
-[ext_resource path="res://Rooms/Kueche/Kueche_Ofen.png" type="Texture" id=8]
-[ext_resource path="res://Rooms/Kueche/Kueche_Ofen_rauchen.png" type="Texture" id=9]
-[ext_resource path="res://Rooms/Kueche/Kueche_Spuele.png" type="Texture" id=10]
-[ext_resource path="res://Rooms/Kueche/Tisch.png" type="Texture" id=11]
-[ext_resource path="res://Rooms/Kueche/Stuhl.png" type="Texture" id=12]
-[ext_resource path="res://Rooms/Kueche/Telefontisch.png" type="Texture" id=13]
+[ext_resource path="res://Rooms/Kueche/Sprites/Kueche_Kuehlschrank.png" type="Texture" id=7]
+[ext_resource path="res://Rooms/Kueche/Sprites/Kueche_Ofen.png" type="Texture" id=8]
+[ext_resource path="res://Rooms/Kueche/Sprites/Kueche_Ofen_rauchen.png" type="Texture" id=9]
+[ext_resource path="res://Rooms/Kueche/Sprites/Kueche_Spuele.png" type="Texture" id=10]
+[ext_resource path="res://Rooms/Kueche/Sprites/Tisch.png" type="Texture" id=11]
+[ext_resource path="res://Rooms/Kueche/Sprites/Stuhl.png" type="Texture" id=12]
+[ext_resource path="res://Rooms/Kueche/Sprites/Telefontisch.png" type="Texture" id=13]
 [ext_resource path="res://Rooms/Kueche/TelephoneTable.gd" type="Script" id=14]
 [ext_resource path="res://Rooms/Kueche/Oven.gd" type="Script" id=15]
 [ext_resource path="res://Rooms/Kueche/Sink.gd" type="Script" id=16]
-[ext_resource path="res://Rooms/Kueche/Mehl.png" type="Texture" id=17]
-[ext_resource path="res://Rooms/Kueche/Milch.png" type="Texture" id=18]
-[ext_resource path="res://Rooms/Kueche/Eier.png" type="Texture" id=19]
-[ext_resource path="res://Rooms/Kueche/Kueche_mittelstueck.png" type="Texture" id=20]
-[ext_resource path="res://Rooms/Kueche/Kueche_endstueck.png" type="Texture" id=21]
+[ext_resource path="res://Rooms/Kueche/Sprites/Mehl.png" type="Texture" id=17]
+[ext_resource path="res://Rooms/Kueche/Sprites/Milch.png" type="Texture" id=18]
+[ext_resource path="res://Rooms/Kueche/Sprites/Eier.png" type="Texture" id=19]
+[ext_resource path="res://Rooms/Kueche/Sprites/Kueche_mittelstueck.png" type="Texture" id=20]
+[ext_resource path="res://Rooms/Kueche/Sprites/Kueche_endstueck.png" type="Texture" id=21]
 [ext_resource path="res://Rooms/Kueche/Counter.gd" type="Script" id=22]
-[ext_resource path="res://Rooms/Kueche/Kuchen.png" type="Texture" id=23]
+[ext_resource path="res://Rooms/Kueche/Sprites/Kuchen.png" type="Texture" id=23]
 [ext_resource path="res://Rooms/Kueche/Bowl.gd" type="Script" id=24]
-[ext_resource path="res://Rooms/Kueche/Kueche_Ofen_backen.png" type="Texture" id=25]
+[ext_resource path="res://Rooms/Kueche/Sprites/Kueche_Ofen_backen.png" type="Texture" id=25]
 [ext_resource path="res://Rooms/Kueche/Table.gd" type="Script" id=26]
-[ext_resource path="res://Rooms/Kueche/Schüssel.png" type="Texture" id=27]
+[ext_resource path="res://Rooms/Kueche/Sprites/Schüssel.png" type="Texture" id=27]
 [ext_resource path="res://Rooms/Kueche/KitchenMomArea.gd" type="Script" id=28]
 [ext_resource path="res://Rooms/Kueche/TelephoneMomArea.gd" type="Script" id=29]
+[ext_resource path="res://Rooms/Kueche/Sounds/Ofen benutzen.wav" type="AudioStream" id=30]
 [ext_resource path="res://Rooms/Kueche/MomAreaEnd.gd" type="Script" id=31]
 [ext_resource path="res://Rooms/Kueche/CakeMomArea.gd" type="Script" id=32]
+[ext_resource path="res://Rooms/Kueche/Sounds/ofenBrennt.wav" type="AudioStream" id=33]
+[ext_resource path="res://Rooms/Kueche/Sounds/mehl.wav" type="AudioStream" id=34]
+[ext_resource path="res://Rooms/Kueche/Sounds/milch.wav" type="AudioStream" id=35]
+[ext_resource path="res://Rooms/Kueche/Sounds/eier.wav" type="AudioStream" id=36]
+[ext_resource path="res://Rooms/Kueche/Sounds/telefon.wav" type="AudioStream" id=37]
 
-[sub_resource type="RectangleShape2D" id=44]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 16 )
 
-[sub_resource type="RectangleShape2D" id=46]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 10, 32 )
 
-[sub_resource type="RectangleShape2D" id=48]
+[sub_resource type="RectangleShape2D" id=3]
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 14, 14 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 32, 32 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 32, 32 )
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 32, 32 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 9 )
+region = Rect2( 32, 0, 32, 64 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 9 )
-region = Rect2( 0, 0, 32, 64 )
-
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 9 )
-region = Rect2( 32, 0, 32, 64 )
-
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 9 )
 region = Rect2( 64, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=49]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 25 )
 region = Rect2( 0, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=50]
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 25 )
 region = Rect2( 32, 0, 32, 64 )
 
-[sub_resource type="SpriteFrames" id=15]
+[sub_resource type="SpriteFrames" id=13]
 animations = [ {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
 "name": "out",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
 "loop": true,
 "name": "smoking",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 49 ), SubResource( 50 ) ],
+"frames": [ SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
 "name": "baking",
 "speed": 5.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 32, 32 )
+
+[sub_resource type="RectangleShape2D" id=15]
+
 [sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 32, 32 )
 
-[sub_resource type="RectangleShape2D" id=47]
-
-[sub_resource type="RectangleShape2D" id=17]
-extents = Vector2( 32, 32 )
-
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 10 )
 region = Rect2( 32, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=19]
+[sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 10 )
 region = Rect2( 64, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=20]
+[sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 10 )
 region = Rect2( 96, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=21]
+[sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 10 )
 region = Rect2( 0, 0, 32, 32 )
 
-[sub_resource type="SpriteFrames" id=22]
+[sub_resource type="SpriteFrames" id=21]
 animations = [ {
-"frames": [ SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
+"frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
 "loop": true,
 "name": "running",
 "speed": 15.0
 }, {
-"frames": [ SubResource( 21 ) ],
+"frames": [ SubResource( 20 ) ],
 "loop": true,
 "name": "stopped",
 "speed": 5.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 32, 32 )
+
 [sub_resource type="RectangleShape2D" id=23]
 extents = Vector2( 32, 32 )
 
-[sub_resource type="RectangleShape2D" id=26]
+[sub_resource type="RectangleShape2D" id=24]
 extents = Vector2( 32, 32 )
 
-[sub_resource type="RectangleShape2D" id=27]
-extents = Vector2( 32, 32 )
-
-[sub_resource type="AtlasTexture" id=28]
+[sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 13 )
 region = Rect2( 0, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=29]
+[sub_resource type="AtlasTexture" id=26]
 atlas = ExtResource( 13 )
 region = Rect2( 32, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=30]
+[sub_resource type="AtlasTexture" id=27]
 atlas = ExtResource( 13 )
 region = Rect2( 64, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=31]
+[sub_resource type="AtlasTexture" id=28]
 atlas = ExtResource( 13 )
 region = Rect2( 96, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=32]
+[sub_resource type="AtlasTexture" id=29]
 atlas = ExtResource( 13 )
 region = Rect2( 128, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=33]
+[sub_resource type="AtlasTexture" id=30]
 atlas = ExtResource( 13 )
 region = Rect2( 160, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=34]
+[sub_resource type="AtlasTexture" id=31]
 atlas = ExtResource( 13 )
 region = Rect2( 192, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=35]
+[sub_resource type="AtlasTexture" id=32]
 atlas = ExtResource( 13 )
 region = Rect2( 224, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=36]
+[sub_resource type="AtlasTexture" id=33]
 atlas = ExtResource( 13 )
 region = Rect2( 256, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=37]
+[sub_resource type="AtlasTexture" id=34]
 atlas = ExtResource( 13 )
 region = Rect2( 288, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=38]
+[sub_resource type="AtlasTexture" id=35]
 atlas = ExtResource( 13 )
 region = Rect2( 320, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=39]
+[sub_resource type="AtlasTexture" id=36]
 atlas = ExtResource( 13 )
 region = Rect2( 352, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=40]
+[sub_resource type="AtlasTexture" id=37]
 atlas = ExtResource( 13 )
 region = Rect2( 384, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=41]
+[sub_resource type="AtlasTexture" id=38]
 atlas = ExtResource( 13 )
 region = Rect2( 416, 0, 32, 64 )
 
-[sub_resource type="AtlasTexture" id=42]
+[sub_resource type="AtlasTexture" id=39]
 atlas = ExtResource( 13 )
 region = Rect2( 448, 0, 32, 64 )
 
-[sub_resource type="SpriteFrames" id=43]
+[sub_resource type="SpriteFrames" id=40]
 animations = [ {
-"frames": [ SubResource( 28 ) ],
+"frames": [ SubResource( 25 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ],
+"frames": [ SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ) ],
 "loop": true,
 "name": "ringing",
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=52]
+[sub_resource type="RectangleShape2D" id=41]
 extents = Vector2( 16, 16 )
 
-[sub_resource type="RectangleShape2D" id=25]
+[sub_resource type="RectangleShape2D" id=42]
 extents = Vector2( 16, 16 )
 
-[sub_resource type="RectangleShape2D" id=51]
+[sub_resource type="RectangleShape2D" id=43]
 extents = Vector2( 94, 30 )
 
-[sub_resource type="RectangleShape2D" id=24]
+[sub_resource type="RectangleShape2D" id=44]
 extents = Vector2( 96, 32 )
 
-[sub_resource type="RectangleShape2D" id=53]
+[sub_resource type="RectangleShape2D" id=45]
 
-[sub_resource type="RectangleShape2D" id=55]
+[sub_resource type="RectangleShape2D" id=46]
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=47]
 extents = Vector2( 48, 16 )
 
-[sub_resource type="RectangleShape2D" id=54]
+[sub_resource type="RectangleShape2D" id=48]
 extents = Vector2( 32, 14 )
 
-[sub_resource type="Curve2D" id=45]
+[sub_resource type="Curve2D" id=49]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 720, 80, 0, 0, 0, 0, 720, 176, 0, 0, 0, 0, 496, 176, 0, 0, 0, 0, 496, 336, 0, 0, 0, 0, 80, 336, 0, 0, 0, 0, 80, 528 )
 }
 
-[sub_resource type="RectangleShape2D" id=56]
+[sub_resource type="RectangleShape2D" id=50]
 extents = Vector2( 32, 16 )
 
 [node name="Kueche" type="Node2D" groups=["room"]]
@@ -268,7 +274,7 @@ texture = ExtResource( 20 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boden/kitchenpart"]
 visible = false
 position = Vector2( 0, 16 )
-shape = SubResource( 44 )
+shape = SubResource( 1 )
 
 [node name="kitchenpart2" type="StaticBody2D" parent="Boden"]
 position = Vector2( 384, 96 )
@@ -284,7 +290,7 @@ texture = ExtResource( 20 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boden/kitchenpart2"]
 visible = false
 position = Vector2( 0, 16 )
-shape = SubResource( 44 )
+shape = SubResource( 1 )
 
 [node name="kitchenpart3" type="StaticBody2D" parent="Boden"]
 position = Vector2( 320, 96 )
@@ -300,7 +306,7 @@ texture = ExtResource( 20 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boden/kitchenpart3"]
 visible = false
 position = Vector2( 0, 16 )
-shape = SubResource( 44 )
+shape = SubResource( 1 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 6 )
@@ -316,14 +322,14 @@ position = Vector2( 304, 96 )
 script = ExtResource( 22 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Counters/CounterWithBowl"]
-shape = SubResource( 46 )
+shape = SubResource( 2 )
 
 [node name="Bowl" type="Area2D" parent="TileMap/Counters/CounterWithBowl"]
 position = Vector2( 0, -16 )
 script = ExtResource( 24 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Counters/CounterWithBowl/Bowl"]
-shape = SubResource( 48 )
+shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="TileMap/Counters/CounterWithBowl/Bowl"]
 texture = ExtResource( 27 )
@@ -333,14 +339,14 @@ position = Vector2( 336, 96 )
 script = ExtResource( 22 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Counters/Counter2"]
-shape = SubResource( 46 )
+shape = SubResource( 2 )
 
 [node name="Counter3" type="Area2D" parent="TileMap/Counters" groups=["dropzone"]]
 position = Vector2( 368, 96 )
 script = ExtResource( 22 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Counters/Counter3"]
-shape = SubResource( 46 )
+shape = SubResource( 2 )
 
 [node name="Eggs" type="Area2D" parent="TileMap/Counters/Counter3"]
 position = Vector2( 0, -16 )
@@ -351,32 +357,35 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Counters/Counter3/Eggs"]
 visible = false
-shape = SubResource( 7 )
+shape = SubResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="TileMap/Counters/Counter3/Eggs"]
 texture = ExtResource( 19 )
 offset = Vector2( 0, 3 )
+
+[node name="Sound" type="AudioStreamPlayer" parent="TileMap/Counters/Counter3/Eggs"]
+stream = ExtResource( 36 )
 
 [node name="Counter4" type="Area2D" parent="TileMap/Counters" groups=["dropzone"]]
 position = Vector2( 400, 96 )
 script = ExtResource( 22 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Counters/Counter4"]
-shape = SubResource( 46 )
+shape = SubResource( 2 )
 
 [node name="Counter5" type="Area2D" parent="TileMap/Counters" groups=["dropzone"]]
 position = Vector2( 144, 96 )
 script = ExtResource( 22 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Counters/Counter5"]
-shape = SubResource( 46 )
+shape = SubResource( 2 )
 
 [node name="Counter6" type="Area2D" parent="TileMap/Counters" groups=["dropzone"]]
 position = Vector2( 112, 96 )
 script = ExtResource( 22 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Counters/Counter6"]
-shape = SubResource( 46 )
+shape = SubResource( 2 )
 
 [node name="Flour" type="Area2D" parent="TileMap/Counters/Counter6"]
 position = Vector2( 0, -16 )
@@ -387,11 +396,14 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Counters/Counter6/Flour"]
 visible = false
-shape = SubResource( 7 )
+shape = SubResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="TileMap/Counters/Counter6/Flour"]
 texture = ExtResource( 17 )
 offset = Vector2( 0, -5 )
+
+[node name="Sound" type="AudioStreamPlayer" parent="TileMap/Counters/Counter6/Flour"]
+stream = ExtResource( 34 )
 
 [node name="Undroppable" type="Area2D" parent="TileMap" groups=["undroppable"]]
 visible = false
@@ -407,7 +419,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Fridge"]
-shape = SubResource( 9 )
+shape = SubResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="TileMap/Fridge"]
 position = Vector2( 0, -32 )
@@ -418,18 +430,21 @@ texture = ExtResource( 7 )
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Fridge/StaticBody2D"]
-shape = SubResource( 10 )
+shape = SubResource( 6 )
 
 [node name="Milk" type="Area2D" parent="TileMap/Fridge"]
 position = Vector2( -16, -112 )
 script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Fridge/Milk"]
-shape = SubResource( 7 )
+shape = SubResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="TileMap/Fridge/Milk"]
 position = Vector2( 0, -3 )
 texture = ExtResource( 18 )
+
+[node name="Sound" type="AudioStreamPlayer" parent="TileMap/Fridge/Milk"]
+stream = ExtResource( 35 )
 
 [node name="Oven" type="Area2D" parent="TileMap" groups=["dropzone", "oven"]]
 position = Vector2( 192, 96 )
@@ -439,12 +454,12 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Oven"]
-shape = SubResource( 11 )
+shape = SubResource( 7 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TileMap/Oven"]
 position = Vector2( 0, -32 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 15 )
+frames = SubResource( 13 )
 animation = "out"
 playing = true
 
@@ -452,7 +467,7 @@ playing = true
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Oven/StaticBody2D"]
-shape = SubResource( 16 )
+shape = SubResource( 14 )
 
 [node name="Cake" type="Area2D" parent="TileMap/Oven" groups=["cake"]]
 position = Vector2( -16, -112 )
@@ -462,7 +477,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Oven/Cake"]
-shape = SubResource( 47 )
+shape = SubResource( 15 )
 
 [node name="Sprite" type="Sprite" parent="TileMap/Oven/Cake"]
 texture = ExtResource( 23 )
@@ -473,6 +488,12 @@ one_shot = true
 [node name="BurnTimer" type="Timer" parent="TileMap/Oven"]
 one_shot = true
 
+[node name="UseSound" type="AudioStreamPlayer" parent="TileMap/Oven"]
+stream = ExtResource( 30 )
+
+[node name="BurnSound" type="AudioStreamPlayer" parent="TileMap/Oven"]
+stream = ExtResource( 33 )
+
 [node name="Sink" type="Area2D" parent="TileMap" groups=["activatable", "undroppable"]]
 position = Vector2( 256, 96 )
 script = ExtResource( 16 )
@@ -481,18 +502,18 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Sink"]
-shape = SubResource( 17 )
+shape = SubResource( 16 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TileMap/Sink"]
 scale = Vector2( 2, 2 )
-frames = SubResource( 22 )
+frames = SubResource( 21 )
 animation = "stopped"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="TileMap/Sink"]
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Sink/StaticBody2D"]
-shape = SubResource( 23 )
+shape = SubResource( 22 )
 
 [node name="TelephoneTable" type="Area2D" parent="TileMap" groups=["telephone", "undroppable"]]
 position = Vector2( 576, 96 )
@@ -504,15 +525,15 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="TileMap/TelephoneTable"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/TelephoneTable/StaticBody2D"]
-shape = SubResource( 26 )
+shape = SubResource( 23 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/TelephoneTable"]
-shape = SubResource( 27 )
+shape = SubResource( 24 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="TileMap/TelephoneTable"]
 position = Vector2( 0, -32 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 43 )
+frames = SubResource( 40 )
 animation = "idle"
 
 [node name="TelephoneMomArea" type="Area2D" parent="TileMap/TelephoneTable"]
@@ -520,16 +541,23 @@ position = Vector2( 80, 80 )
 script = ExtResource( 29 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/TelephoneTable/TelephoneMomArea"]
-shape = SubResource( 52 )
+shape = SubResource( 41 )
+
+[node name="PhoneTimer" type="Timer" parent="TileMap/TelephoneTable"]
+one_shot = true
+
+[node name="Sound" type="AudioStreamPlayer" parent="TileMap/TelephoneTable"]
+stream = ExtResource( 37 )
 
 [node name="Chair" type="StaticBody2D" parent="TileMap" groups=["undroppable"]]
 position = Vector2( 304, 432 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Chair"]
-shape = SubResource( 25 )
+shape = SubResource( 42 )
 
 [node name="Sprite" type="Sprite" parent="TileMap/Chair"]
 position = Vector2( 0, -16 )
@@ -539,11 +567,12 @@ texture = ExtResource( 12 )
 [node name="Chair2" type="StaticBody2D" parent="TileMap" groups=["undroppable"]]
 position = Vector2( 304, 368 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Chair2"]
-shape = SubResource( 25 )
+shape = SubResource( 42 )
 
 [node name="Sprite" type="Sprite" parent="TileMap/Chair2"]
 position = Vector2( 0, -16 )
@@ -553,11 +582,12 @@ texture = ExtResource( 12 )
 [node name="Chair3" type="StaticBody2D" parent="TileMap" groups=["undroppable"]]
 position = Vector2( 592, 368 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Chair3"]
-shape = SubResource( 25 )
+shape = SubResource( 42 )
 
 [node name="Sprite" type="Sprite" parent="TileMap/Chair3"]
 position = Vector2( 0, -16 )
@@ -567,11 +597,12 @@ texture = ExtResource( 12 )
 [node name="Chair4" type="StaticBody2D" parent="TileMap" groups=["undroppable"]]
 position = Vector2( 560, 432 )
 __meta__ = {
-"_edit_group_": true
+"_edit_group_": true,
+"_edit_lock_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Chair4"]
-shape = SubResource( 25 )
+shape = SubResource( 42 )
 
 [node name="Sprite" type="Sprite" parent="TileMap/Chair4"]
 position = Vector2( 0, -16 )
@@ -595,7 +626,7 @@ region_rect = Rect2( 0, 0, 32, 16 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/kitchenpart4"]
 visible = false
 position = Vector2( 0, 16 )
-shape = SubResource( 44 )
+shape = SubResource( 1 )
 
 [node name="kitchenpart5" type="StaticBody2D" parent="TileMap"]
 position = Vector2( 128, 224 )
@@ -614,7 +645,7 @@ region_rect = Rect2( 0, 0, 32, 16 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/kitchenpart5"]
 visible = false
 position = Vector2( 0, 16 )
-shape = SubResource( 44 )
+shape = SubResource( 1 )
 
 [node name="kitchenpart6" type="StaticBody2D" parent="TileMap"]
 position = Vector2( 192, 224 )
@@ -633,7 +664,7 @@ region_rect = Rect2( 0, 0, 32, 16 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/kitchenpart6"]
 visible = false
 position = Vector2( 0, 16 )
-shape = SubResource( 44 )
+shape = SubResource( 1 )
 
 [node name="kitchenpart7" type="StaticBody2D" parent="TileMap"]
 position = Vector2( 256, 224 )
@@ -652,7 +683,7 @@ region_rect = Rect2( 0, 0, 32, 16 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/kitchenpart7"]
 visible = false
 position = Vector2( 0, 16 )
-shape = SubResource( 44 )
+shape = SubResource( 1 )
 
 [node name="kitchenpart8" type="StaticBody2D" parent="TileMap"]
 position = Vector2( 320, 224 )
@@ -671,19 +702,26 @@ region_rect = Rect2( 0, 0, 32, 16 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/kitchenpart8"]
 visible = false
 position = Vector2( 0, 16 )
-shape = SubResource( 44 )
+shape = SubResource( 1 )
 
 [node name="Table" type="Area2D" parent="TileMap" groups=["dropzone"]]
 position = Vector2( 448, 416 )
 script = ExtResource( 26 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Table"]
-shape = SubResource( 51 )
+shape = SubResource( 43 )
 
 [node name="Sprite" type="Sprite" parent="TileMap/Table"]
 position = Vector2( 0, -16 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 11 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Table" type="StaticBody2D" parent="TileMap/Table" groups=["undroppable"]]
 visible = false
@@ -692,23 +730,31 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Table/Table"]
-shape = SubResource( 24 )
+shape = SubResource( 44 )
 
 [node name="KitchenMomArea" type="Area2D" parent="TileMap"]
 position = Vector2( 496, 176 )
 script = ExtResource( 28 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/KitchenMomArea"]
-shape = SubResource( 53 )
+shape = SubResource( 45 )
 
 [node name="CakeMomArea" type="Area2D" parent="TileMap"]
 position = Vector2( 496, 304 )
 script = ExtResource( 32 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/CakeMomArea"]
-shape = SubResource( 55 )
+shape = SubResource( 46 )
 
 [node name="DoorWohnzimmer" type="Area2D" parent="." groups=["door"]]
 position = Vector2( 720, 48 )
@@ -717,7 +763,7 @@ room_name = "Wohnzimmer"
 player_position = Vector2( 720, 496 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorWohnzimmer"]
-shape = SubResource( 5 )
+shape = SubResource( 47 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -729,7 +775,7 @@ room_name = "Zimmer"
 player_position = Vector2( 80, 80 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorKinderzimmer"]
-shape = SubResource( 54 )
+shape = SubResource( 48 )
 
 [node name="MomPaths" type="Node2D" parent="."]
 __meta__ = {
@@ -738,7 +784,7 @@ __meta__ = {
 }
 
 [node name="Path2D" type="Path2D" parent="MomPaths"]
-curve = SubResource( 45 )
+curve = SubResource( 49 )
 
 [node name="MomAreaEnd" type="Area2D" parent="."]
 position = Vector2( 64, 528 )
@@ -746,7 +792,11 @@ script = ExtResource( 31 )
 enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MomAreaEnd"]
-shape = SubResource( 56 )
+shape = SubResource( 50 )
 
+[connection signal="room_entered" from="." to="TileMap/Oven" method="_on_Kueche_room_entered"]
+[connection signal="room_left" from="." to="TileMap/Oven" method="_on_Kueche_room_left"]
 [connection signal="timeout" from="TileMap/Oven/BakeTimer" to="TileMap/Oven" method="_on_BakeTimer_timeout"]
 [connection signal="timeout" from="TileMap/Oven/BurnTimer" to="TileMap/Oven" method="_on_BurnTimer_timeout"]
+[connection signal="finished" from="TileMap/Oven/BurnSound" to="TileMap/Oven" method="_on_BurnSound_finished"]
+[connection signal="timeout" from="TileMap/TelephoneTable/PhoneTimer" to="TileMap/TelephoneTable" method="_on_PhoneTimer_timeout"]

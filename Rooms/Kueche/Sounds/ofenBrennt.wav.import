@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ofenBrennt.wav-0aad430951104f53d84e35cd93758b34.sample"
+
+[deps]
+
+source_file="res://Rooms/Kueche/Sounds/ofenBrennt.wav"
+dest_files=[ "res://.import/ofenBrennt.wav-0aad430951104f53d84e35cd93758b34.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
